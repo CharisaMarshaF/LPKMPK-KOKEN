@@ -69,55 +69,70 @@
 		</nav>
 	</header> -->
 
-	    <!-- Header START -->
-    <header class="navbar-light navbar-sticky">
-        <nav class="navbar navbar-expand-xl z-index-9">
-            <div class="container">
-                <!-- Logo START -->
-                <a class="navbar-brand" href="index.html">
-                    <img class="light-mode-item navbar-brand-item" src="<?= base_url('assets/assets/img/logoasli.png'); ?>" alt="logo"
-                        style="height: 60px;">
-                    <img class="dark-mode-item navbar-brand-item" src="<?= base_url('assets/assets/img/logoasli.png'); ?>" alt="logo"
-                        style="height: 60px;">
-                </a>
+<!-- Header START -->
+<header class="navbar-light navbar-sticky">
+	<nav class="navbar navbar-expand-xl z-index-9">
+		<div class="container">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="index.html">
+				<img class="light-mode-item navbar-brand-item" src="<?= base_url('assets/assets/img/logoasli.png'); ?>"
+					alt="logo" style="height: 60px;">
+				<img class="dark-mode-item navbar-brand-item" src="<?= base_url('assets/assets/img/logoasli.png'); ?>"
+					alt="logo" style="height: 60px;">
+			</a>
 
-                <!-- Logo END -->
+			<!-- Logo END -->
 
-                <!-- Navbar toggler -->
-                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-animation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
+			<!-- Navbar toggler -->
+			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
 
-				<!-- Main navbar START -->
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<!-- Nav Main menu START -->
-					<ul class="navbar-nav mx-auto text-center">
-						<li class="nav-item ">
-							<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == '') ? 'active' : '' ?>" href="<?= base_url('home') ?>"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
-						</li>
-						<li class="nav-item ">
-							<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == 'about') ? 'active' : '' ?>" href="<?= base_url('home/about/') ?>"><i class="bi bi-person-circle me-2"></i> Profile</a>
-						</li>
-						<li class="nav-item ">
-							<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == 'contact') ? 'active' : '' ?>" href="<?= base_url('home/contact/') ?>"><i class="bi bi-envelope-paper-fill me-2"></i> Contact</a>
-						</li>
-						<li class="nav-item ">
-							<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == 'faq') ? 'active' : '' ?>" href="<?= base_url('home/faq/') ?>"><i class="bi bi-question-circle-fill me-2"></i> Pertanyaan (FAQ)</a>
-						</li>
-						<li class="nav-item ">
-							<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == 'galeri') ? 'active' : '' ?>" href="<?= base_url('home/galeri/') ?>"><i class="bi bi-images me-2"></i> Gallery</a>
-						</li>
-					</ul>
-					<!-- Nav Main menu END -->
+			<!-- Main navbar START -->
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<!-- Nav Main menu START -->
+				<ul class="navbar-nav mx-auto text-center">
+					<li class="nav-item">
+						<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == '') ? 'active' : '' ?>"
+							href="<?= base_url('home') ?>"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == 'about') ? 'active' : '' ?>"
+							href="<?= base_url('home/about/') ?>"><i class="bi bi-person-circle me-2"></i> Profile</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == 'contact') ? 'active' : '' ?>"
+							href="<?= base_url('home/contact/') ?>"><i class="bi bi-envelope-paper-fill me-2"></i>
+							Contact</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == 'faq') ? 'active' : '' ?>"
+							href="<?= base_url('home/faq/') ?>"><i class="bi bi-question-circle-fill me-2"></i>
+							Pertanyaan (FAQ)</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?= ($this->uri->segment(1) == 'home' && $this->uri->segment(2) == 'galeri') ? 'active' : '' ?>"
+							href="<?= base_url('home/galeri/') ?>"><i class="bi bi-images me-2"></i> Gallery</a>
+					</li>
+				</ul>
+				<!-- Nav Main menu END -->
+
+				<!-- Button Daftar -->
+				<div class="text-center text-lg-end">
+					<a href="#" class="btn btn-primary ms-lg-3 mt-3 mt-lg-0">
+						<i class="bi bi-pencil-square me-1"></i> Daftar
+					</a>
 				</div>
+			</div>
 
-            </div>
-        </nav>
-    </header>
-    <!-- Header END -->
+
+		</div>
+	</nav>
+</header>
+<!-- Header END -->

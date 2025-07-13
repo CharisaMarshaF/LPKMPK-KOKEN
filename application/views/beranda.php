@@ -614,109 +614,130 @@ Gallery START-->
             </div>
         </div>
 
-        <!-- Image gallery START -->
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="row g-4">
-                    <!-- Image 1 -->
-                    <div class="col-md-6">
-                        <div class="card overflow-hidden">
-                            <div class="card-overlay-hover">
-                                <img src="<?= $img_base ?>LPK-21.jpg" class="rounded-3" alt="course image">
-                            </div>
-                            <a class="card-element-hover position-absolute w-100 h-100" data-glightbox
-                               data-gallery="gallery" href="<?= $img_base ?>LPK-21.jpg">
-                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
-                            </a>
-                        </div>
-                    </div>
+       <!-- =======================
+Image Gallery START -->
+<!-- GLightbox CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
-                    <!-- Image 2 -->
-                    <div class="col-md-6">
-                        <div class="card overflow-hidden">
-                            <div class="card-overlay-hover">
-                                <img src="<?= $img_base ?>LPK-27.jpg" class="rounded-3" alt="course image">
-                            </div>
-                            <a class="card-element-hover position-absolute w-100 h-100" data-glightbox
-                               data-gallery="gallery" href="<?= $img_base ?>LPK-27.jpg">
-                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
-                            </a>
+<div class="container py-5">
+    <div class="row g-4">
+        <!-- Kiri -->
+        <div class="col-lg-4">
+            <div class="row g-4">
+                <!-- Image 1 -->
+                <div class="col-md-6">
+                    <div class="card overflow-hidden position-relative">
+                        <div class="card-overlay-hover">
+                            <img src="<?= $img_base ?>LPK-21.jpg" class="rounded-3 w-100" alt="course image">
                         </div>
-                    </div>
-
-                    <!-- Image 3 -->
-                    <div class="col-12">
-                        <div class="card overflow-hidden">
-                            <div class="card-overlay-hover">
-                                <img src="<?= $img_base ?>LPK-71.jpg" class="rounded-3" alt="course image">
-                            </div>
-                            <a class="card-element-hover position-absolute w-100 h-100" data-glightbox
-                               data-gallery="gallery" href="<?= $img_base ?>LPK-304.jpg">
-                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
-                            </a>
-                        </div>
+                        <a class="card-element-hover position-absolute w-100 h-100" data-glightbox data-gallery="gallery"
+                            href="<?= $img_base ?>LPK-21.jpg">
+                            <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Tengah -->
-            <div class="col-lg-4">
-                <div class="card overflow-hidden">
-                    <div class="card-overlay-hover">
-                        <img src="<?= $img_base ?>LPK-497.jpg" class="rounded-3" alt="course image">
+                <!-- Image 2 -->
+                <div class="col-md-6">
+                    <div class="card overflow-hidden position-relative">
+                        <div class="card-overlay-hover">
+                            <img src="<?= $img_base ?>LPK-27.jpg" class="rounded-3 w-100" alt="course image">
+                        </div>
+                        <a class="card-element-hover position-absolute w-100 h-100" data-glightbox data-gallery="gallery"
+                            href="<?= $img_base ?>LPK-27.jpg">
+                            <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
+                        </a>
                     </div>
-                    <a class="card-element-hover position-absolute w-100 h-100" data-glightbox
-                       data-gallery="gallery" href="<?= $img_base ?>LPK-497.jpg">
-                        <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
-                    </a>
                 </div>
-            </div>
 
-            <!-- Kanan -->
-            <div class="col-lg-4">
-                <div class="row g-4">
-                    <!-- Image 4 -->
-                    <div class="col-12">
-                        <div class="card overflow-hidden">
-                            <div class="card-overlay-hover">
-                                <img src="<?= $img_base ?>LPK-281.jpg" class="rounded-3" alt="course image">
-                            </div>
-                            <a class="card-element-hover position-absolute w-100 h-100" data-glightbox
-                               data-gallery="gallery" href="<?= $img_base ?>LPK-281.jpg">
-                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
-                            </a>
+                <!-- Image 3 -->
+                <div class="col-12">
+                    <div class="card overflow-hidden position-relative">
+                        <div class="card-overlay-hover">
+                            <img src="<?= $img_base ?>LPK-71.jpg" class="rounded-3 w-100" alt="course image">
                         </div>
+                        <a class="card-element-hover position-absolute w-100 h-100" data-glightbox data-gallery="gallery"
+                            href="<?= $img_base ?>LPK-304.jpg">
+                            <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
+                        </a>
                     </div>
-
-                    <!-- Image 5 -->
-                    <div class="col-md-6">
-                        <div class="card overflow-hidden">
-                            <div class="card-overlay-hover">
-                                <img src="<?= $img_base ?>LPK-209.jpg" class="rounded-3" alt="course image">
-                            </div>
-                            <a class="card-element-hover position-absolute w-100 h-100" data-glightbox
-                               data-gallery="gallery" href="<?= $img_base ?>LPK-209.jpg">
-                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Image 6 -->
-                    <div class="col-md-6">
-                        <div class="card overflow-hidden">
-                            <div class="card-overlay-hover">
-                                <img src="<?= $img_base ?>LPK-190.jpg" class="rounded-3" alt="course image">
-                            </div>
-                            <a class="card-element-hover position-absolute w-100 h-100" data-glightbox
-                               data-gallery="gallery" href="<?= $img_base ?>LPK-190.jpg">
-                                <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div> <!-- Row END -->
+                </div>
             </div>
         </div>
-        <!-- Image gallery END -->
+
+        <!-- Tengah -->
+        <div class="col-lg-4">
+            <div class="card overflow-hidden position-relative h-100">
+                <div class="card-overlay-hover h-100">
+                    <img src="<?= $img_base ?>LPK-497.jpg" class="rounded-3 w-100 h-100 object-fit-cover" alt="course image">
+                </div>
+                <a class="card-element-hover position-absolute w-100 h-100" data-glightbox data-gallery="gallery"
+                    href="<?= $img_base ?>LPK-497.jpg">
+                    <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Kanan -->
+        <div class="col-lg-4">
+            <div class="row g-4">
+                <!-- Image 4 -->
+                <div class="col-12">
+                    <div class="card overflow-hidden position-relative">
+                        <div class="card-overlay-hover">
+                            <img src="<?= $img_base ?>LPK-281.jpg" class="rounded-3 w-100" alt="course image">
+                        </div>
+                        <a class="card-element-hover position-absolute w-100 h-100" data-glightbox data-gallery="gallery"
+                            href="<?= $img_base ?>LPK-281.jpg">
+                            <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="col-md-6">
+                    <div class="card overflow-hidden position-relative">
+                        <div class="card-overlay-hover">
+                            <img src="<?= $img_base ?>LPK-209.jpg" class="rounded-3 w-100" alt="course image">
+                        </div>
+                        <a class="card-element-hover position-absolute w-100 h-100" data-glightbox data-gallery="gallery"
+                            href="<?= $img_base ?>LPK-209.jpg">
+                            <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image 6 -->
+                <div class="col-md-6">
+                    <div class="card overflow-hidden position-relative">
+                        <div class="card-overlay-hover">
+                            <img src="<?= $img_base ?>LPK-190.jpg" class="rounded-3 w-100" alt="course image">
+                        </div>
+                        <a class="card-element-hover position-absolute w-100 h-100" data-glightbox data-gallery="gallery"
+                            href="<?= $img_base ?>LPK-190.jpg">
+                            <i class="bi bi-fullscreen fs-6 text-white position-absolute top-50 start-50 translate-middle bg-dark rounded-3 p-2 lh-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Image Gallery END -->
+
+<!-- GLightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+    const lightbox = GLightbox({
+        selector: '[data-glightbox]',
+        touchNavigation: true,
+        loop: true,
+        zoomable: true,
+        openEffect: 'fade',
+        closeEffect: 'fade',
+    });
+</script>
+
     </div>
 </section>
 
@@ -739,27 +760,155 @@ Footer END -->
     <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
     <!-- Admission alert box START -->
-    <div class="alert alert-light alert-dismissible fade show position-fixed bottom-0 start-50 translate-middle-x z-index-99 d-lg-flex justify-content-between align-items-center shadow p-4 col-9 col-md-7 col-xxl-5"
-        role="alert">
-        <div>
-            <h4 class="text-dark">Pendaftaran Dibuka!</h4>
-            <p class="m-0 pe-3">Bergabunglah bersama kami di LPK MPK KOKEN dan raih kesempatan magang ke Jepang.</p>
-        </div>
-        <div class="d-flex mt-3 mt-lg-0">
-            <a href="https://wa.me/6285647523100" class="btn btn-success btn-sm mb-0 me-2">Daftar Sekarang</a>
 
-            <div class="position-absolute end-0 top-0 mt-n3 me-n3">
-                <button type="button" class="btn btn-danger btn-round btn-sm mb-0" data-bs-dismiss="alert"
-                    aria-label="Close">
-                    <span aria-hidden="true"><i class="bi bi-x-lg"></i></span>
-                </button>
-            </div>
-        </div>
-    </div>
+
+<!-- WhatsApp Bubble -->
+<div class="wa-bubble" onclick="toggleWAChat()">
+    <i class="bi bi-whatsapp"></i>
+</div>
+
+<!-- Chatbox -->
+<div class="wa-chatbox" id="waChat">
+    <h5><i class="bi bi-chat-dots"></i> Ada yang bisa kami bantu?</h5>
+    <input type="text" id="waName" placeholder="Nama Anda">
+    <textarea id="waMessage" rows="3" placeholder="Tulis pesan Anda..."></textarea>
+    <button onclick="sendWA()">Kirim ke WhatsApp</button>
+</div>
+
+<!-- Styles -->
+<style>
+.wa-bubble {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: linear-gradient(135deg, #25D366, #1ebe5d);
+    width: 60px;
+    height: 60px;
+    color: white;
+    border-radius: 50%;
+    font-size: 28px;
+    text-align: center;
+    line-height: 60px;
+    z-index: 1001;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.wa-bubble:hover {
+    transform: scale(1.1);
+}
+
+.wa-chatbox {
+    position: fixed;
+    bottom: 90px;
+    left: 20px;
+    width: 320px;
+    background: #f9fdfb;
+    border: 1px solid #e0f1e8;
+    border-left: 6px solid #25D366;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    animation: fadeInUp 0.3s ease;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wa-chatbox h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1c1c1c;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.wa-chatbox h5 i {
+    margin-right: 6px;
+    color: #25D366;
+}
+
+.wa-chatbox input,
+.wa-chatbox textarea {
+    width: 100%;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    color: #333;
+    transition: border 0.3s;
+}
+
+.wa-chatbox input::placeholder,
+.wa-chatbox textarea::placeholder {
+    color: #888;
+    opacity: 1;
+}
+
+.wa-chatbox input:focus,
+.wa-chatbox textarea:focus {
+    outline: none;
+    border-color: #25D366;
+    box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.2);
+}
+
+.wa-chatbox button {
+    background-color: #25D366;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.wa-chatbox button:hover {
+    background-color: #1ebe5d;
+}
+</style>
+
+<!-- Bootstrap Icons CDN (wajib jika belum ada) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Script WhatsApp -->
+<script>
+function toggleWAChat() {
+    const box = document.getElementById("waChat");
+    box.style.display = (box.style.display === "block") ? "none" : "block";
+}
+
+function sendWA() {
+    const name = document.getElementById("waName").value.trim();
+    const message = document.getElementById("waMessage").value.trim();
+
+    if (!name || !message) {
+        alert("Mohon isi nama dan pesan terlebih dahulu.");
+        return;
+    }
+
+    const text = `Halo Admin,\nSaya ${name},\n${message}`;
+    const encodedText = encodeURIComponent(text);
+    const number = "<?= preg_replace('/[^0-9]/', '', $active_whatsapp) ?>";
+    const url = `https://wa.me/${number}?text=${encodedText}`;
+    window.open(url, '_blank');
+}
+</script>
+
+
+
 
     <!-- Admission alert box END -->
 
-	<!-- Cookie alert box START -->
+	<!-- Cookie alert box START --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 
 	<!-- Cookie alert box END -->
 

@@ -87,6 +87,8 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/assets/css/style.css'); ?>"> -->
 
 <!DOCTYPE html>
+
+
 <html lang="en">
 
 <head>

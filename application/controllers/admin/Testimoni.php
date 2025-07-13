@@ -10,10 +10,11 @@ class Testimoni extends CI_Controller
         if($this->session->userdata('level')==NULL){
 			redirect('auth');
         }  
+        
     }
 
     public function index(){
-        $this->db->from('testimoni'); 
+        $this->db->from('   testimoni'); 
         $testimoni = $this->db->get()->result_array();
         $data = array(
             'judul_halaman' => 'Halaman testimoni',

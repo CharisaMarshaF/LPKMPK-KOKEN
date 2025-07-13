@@ -1,6 +1,4 @@
-
 	<?php require_once('_css.php')?>
-
 
 <body>
 
@@ -33,19 +31,19 @@ style="background-image:url('<?= base_url('assets/assets/images/element/map.svg'
 								<li class="list-item mb-3">
 									<span class="text-white">
 										<i class="fas fa-fw fa-map-marker-alt me-2 mt-1"></i>
-										Jl. Depok No. 1, Manahan, Banjarsari, Surakarta, Jawa Tengah
+										<?= $konfig->alamat ?>
 									</span>
 								</li>
 								<li class="list-item mb-3">
-									<a href="https://wa.me/6285647523100" class="text-white">
+									<a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $active_wa) ?>" class="text-white">
 										<i class="fas fa-fw fa-phone-alt me-2"></i>
-										0856-4752-3100 (Ninik)
+										<?= $active_wa ?>
 									</a>
 								</li>
 								<li class="list-item mb-0">
-									<a href="mailto:Nratnasari21@gmail.com" class="text-white">
+									<a href="mailto:<?= $sosmed->email ?>" class="text-white">
 										<i class="far fa-fw fa-envelope me-2"></i>
-										Nratnasari21@gmail.com
+										<?= $sosmed->email ?>
 									</a>
 								</li>
 							</ul>
@@ -76,7 +74,6 @@ style="background-image:url('<?= base_url('assets/assets/images/element/map.svg'
 		<!-- =======================
 Page Banner END -->
 
-
 		<!-- =======================
 Image and contact form START -->
 		<section>
@@ -92,27 +89,21 @@ Image and contact form START -->
 							<h5 class="mb-0">Follow us on:</h5>
 							<ul class="list-inline mb-0 ms-sm-2">
 								<li class="list-inline-item">
-									<a class="fs-5 me-1 text-facebook"
-										href="https://www.facebook.com/lpkmpkkoken?mibextid=wwXIfr" target="_blank">
+									<a class="fs-5 me-1 text-facebook" href="<?= $sosmed->facebook ?>" target="_blank">
 										<i class="fab fa-fw fa-facebook-square"></i>
 									</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="fs-5 me-1 text-instagram"
-										href="https://www.instagram.com/lpkmpk_koken?igsh=ZHI4Y3M0Y3Bpamoz"
-										target="_blank">
+									<a class="fs-5 me-1 text-instagram" href="<?= $sosmed->instagram ?>" target="_blank">
 										<i class="fab fa-fw fa-instagram"></i>
 									</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="fs-5 me-1 text-dark"
-										href="https://www.tiktok.com/@lpkmpk_koken?_t=ZS-8xbpaFofPD5&_r=1"
-										target="_blank">
+									<a class="fs-5 me-1 text-dark" href="<?= $sosmed->tiktok ?>" target="_blank">
 										<i class="fab fa-fw fa-tiktok"></i>
 									</a>
 								</li>
 							</ul>
-
 						</div>
 					</div>
 
@@ -149,7 +140,7 @@ Image and contact form START -->
 							var message = document.getElementById('textareaBox').value.trim();
 
 							if (name && message) {
-								var phone = '6285647523100'; // Ganti dengan nomor WA tujuan (tanpa +, gunakan 62)
+								var phone = "<?= preg_replace('/[^0-9]/', '', $active_wa) ?>";
 								var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(
 									'Halo, saya ' + name + '.\n\n' + message
 								);
@@ -174,12 +165,13 @@ Map START -->
 				<div class="row">
 					<div class="col-12">
 						<iframe class="w-100 h-400px grayscale rounded"
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.1879075537036!2d110.80730327404562!3d-7.554479274591765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a169dc8843541%3A0x3dc77ad84aeac215!2sJl.%20Depok%20No.1%2C%20Manahan%2C%20Kec.%20Banjarsari%2C%20Kota%20Surakarta%2C%20Jawa%20Tengah%2057139!5e0!3m2!1sen!2sid!4v1751615449147!5m2!1sen!2sid"
+							src="<?= $konfig->google_maps_link ?>"
 							height="500" style="border:0;" aria-hidden="false" tabindex="0"></iframe>
 					</div>
 				</div>
 			</div>
 		</section>
+
 		<!-- =======================
 Map END -->
 
@@ -191,4 +183,3 @@ Map END -->
 	<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
 	<?php require_once('_js.php')?>
-

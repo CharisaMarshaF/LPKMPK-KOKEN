@@ -22,7 +22,6 @@
                     <thead class="bg-gray-100">
                     <tr>
 				<th class="border-b-2 whitespace-no-wrap">NO </th>
-				<th class="border-b-2 whitespace-no-wrap">Judul</th>
 				<th class="border-b-2 whitespace-no-wrap">Foto</th>
 				
 				<th class="border-b-2 text-center whitespace-no-wrap">ACTIONS</th>
@@ -32,7 +31,6 @@
 			<?php  $no = 1; foreach ($galeri as $cc) {?>
 			<tr>
 				<td class="text-left border-b"><?= $no; ?></td>
-				<td class="text-left border-b"><?= $cc['judul']; ?></td>
 				<td class="text-left border-b">
 					<img src="../assets/upload/galeri/<?= $cc['foto']; ?>" alt="Foto" width="100">
 				</td>
@@ -59,28 +57,20 @@
             <div class="modal-header">
                 <h2 class="font-medium text-base mr-auto">TAMBAH CARAOUSEL</h2>
             </div> <!-- END: Modal Header -->
-            <form action="<?= base_url('admin/galeri/simpan') ?>" method="post" enctype="multipart/form-data">
-                <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
-                    <div class="col-span-12">
-                        <label class="form-label">Judul</label>
-                        <input name="judul" id="modal-form-nama" type="text" class="form-control" placeholder=" masukkan foto" required>
-                    </div>
-					
-                    <div class="col-span-12">
-						<label class="form-label">Foto  dengan ukuran (1 : 3)</label>
-						<input name="foto" id="modal-form-foto" type="file" class="form-control" accept="image/*" required>
-						<img id="preview" src="" alt="Preview Foto" style="display:none; width: 100px; margin-top: 10px;">
-					</div>
+<!-- Modal Upload Galeri -->
+<form action="<?= base_url('admin/galeri/simpan') ?>" method="post" enctype="multipart/form-data">
+  <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+    <div class="col-span-12">
+      <label class="form-label">Upload Foto Galeri (1 : 3)</label>
+      <input name="foto[]" type="file" class="form-control" multiple accept="image/*" required>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Batal</button>
+    <button type="submit" class="btn btn-primary w-20">Simpan</button>
+  </div>
+</form>
 
-                    
-                </div>
-                <!-- BEGIN: Modal Footer -->
-                <div class="modal-footer">
-                    <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Batal</button>
-                    <button type="submit" class="btn btn-primary w-20">Simpan</button>
-                </div>
-                <!-- END: Modal Footer -->
-            </form>
         </div>
     </div>
 </div> 

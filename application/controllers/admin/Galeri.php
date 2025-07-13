@@ -19,46 +19,65 @@ class Galeri extends CI_Controller {
 
 		$this->template->load('template_admin','admin/galeri_index',$data);
 	}
-    public function simpan(){
-        $namafoto = date('YmdMis').'.jpg';
-        $config['upload_path']       = 'assets/upload/galeri';
-        $config['max_size'] = 5 * 1024;
-        $config['file_name']         = $namafoto;
-        $config['allowed_types']     = '*';
-        $this->load->library('upload', $config);
-        if($_FILES['foto']['size'] >= 500 * 1024 ){
-            $this->session->set_flashdata('alert','
-            <div class="alert alert-danger alert-dismissible text-white" role="alert">Ukuran foto terlalu besar</div>
-            ');
-            redirect('admin/galeri');
-        } elseif(!$this->upload->do_upload('foto')){
-            $error = array('error' => $this->upload->display_errors());
-        }else{
-            $data  = array('upload_data' => $this->upload->data());
+public function simpan() {
+    $files = $_FILES;
+    $count = count($_FILES['foto']['name']);
+
+    $upload_path = 'assets/upload/galeri/';
+    $allowed_types = 'jpg|jpeg|png|webp';
+    $max_size = 10 * 1024; // 10 MB
+
+    $this->load->library('upload');
+
+    $success_count = 0;
+    $error_count = 0;
+    $messages = [];
+
+    for ($i = 0; $i < $count; $i++) {
+        $_FILES['foto_temp']['name'] = $files['foto']['name'][$i];
+        $_FILES['foto_temp']['type'] = $files['foto']['type'][$i];
+        $_FILES['foto_temp']['tmp_name'] = $files['foto']['tmp_name'][$i];
+        $_FILES['foto_temp']['error'] = $files['foto']['error'][$i];
+        $_FILES['foto_temp']['size'] = $files['foto']['size'][$i];
+
+        $namafoto = date('YmdHis') . '_' . $i . '.jpg';
+
+        $config['upload_path'] = $upload_path;
+        $config['allowed_types'] = $allowed_types;
+        $config['max_size'] = $max_size;
+        $config['file_name'] = $namafoto;
+
+        $this->upload->initialize($config);
+
+        if ($_FILES['foto_temp']['size'] > 10 * 1024 * 1024) {
+            $error_count++;
+            $messages[] = $_FILES['foto_temp']['name'] . ' melebihi 10MB';
+            continue;
         }
-        $this->db->from('galeri');
-        $this->db->where('judul',$this->input->post('judul'));
-        $cek = $this->db->get()->result_array();
-        if($cek<>NULL){
-            $this->session->set_flashdata('alert','
-            <div class="alert alert-success alert-dismissible text-white" role="alert">nama kategoori sudah ada</div>
-            ');
-            redirect('admin/galeri');
-            
+
+        if (!$this->upload->do_upload('foto_temp')) {
+            $error_count++;
+            $messages[] = $_FILES['foto_temp']['name'] . ' gagal: ' . strip_tags($this->upload->display_errors());
+            continue;
         }
-        $data = array(
-            'judul'          => $this->input->post('judul'),
-            'foto'           => $namafoto,
-            'tanggal'        => date('Y-m-d'),
-        );
-        $this->db->insert('galeri',$data);    
-        $this->session->set_flashdata('alert','
-        <div class="alert alert-success mb-1" role="alert">
-        Berhasil menambahkan Caraousel
-        </div>
-        ');
-        redirect('admin/galeri');
+
+        // Insert ke database jika upload berhasil
+        $data = [
+            'foto' => $namafoto,
+            'tanggal' => date('Y-m-d')
+        ];
+        $this->db->insert('galeri', $data);
+        $success_count++;
     }
+
+    $this->session->set_flashdata('alert', '
+        <div class="alert alert-success alert-dismissible text-white" role="alert">
+            Berhasil mengunggah ' . $success_count . ' file. Gagal: ' . $error_count . '
+        </div>
+    ');
+
+    redirect('admin/galeri');
+}
 
     public function delete_data($id){
         $filename = FCPATH . '/assets/upload/galeri/'.$id;

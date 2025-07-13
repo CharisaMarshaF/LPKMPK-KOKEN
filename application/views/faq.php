@@ -34,7 +34,7 @@ Page Banner START -->
 						</figure>
 
 						<!-- Judul -->
-						<h1 class="display-6">Halo, ada yang bisa kami bantu?</h1>
+												<h1 class="display-6">Halo, ada yang bisa kami bantu?</h1>
 
 						<!-- Formulir pertanyaan -->
 						<div class="col-lg-8 mx-auto text-center mt-4">
@@ -47,17 +47,18 @@ Page Banner START -->
 							</form>
 						</div>
 					</div>
+				</div>
 
-					<!-- JavaScript -->
-					<script>
-						function kirimKeWhatsapp() {
-							const nomor = "6285647523100"; // Ganti dengan nomor WhatsApp admin
-							const pertanyaan = document.getElementById("wa-question").value;
-							const pesan = `Halo admin, saya ingin bertanya: ${pertanyaan}`;
-							const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
-							window.open(url, '_blank');
-						}
-					</script>
+				<!-- JavaScript -->
+				<script>
+					function kirimKeWhatsapp() {
+						const nomor = "<?= preg_replace('/[^0-9]/', '', $active_whatsapp) ?>";
+						const pertanyaan = document.getElementById("wa-question").value;
+						const pesan = `Halo admin, saya ingin bertanya: ${pertanyaan}`;
+						const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+						window.open(url, '_blank');
+					}
+				</script>
 
 
 
@@ -99,105 +100,26 @@ Faqs START -->
         </figure>
 
         <!-- FAQ START -->
-        <div class="accordion accordion-icon accordion-shadow mt-4 text-start position-relative" id="accordionFAQ">
-
-          <!-- FAQ 1 -->
-          <div class="accordion-item mb-3">
-            <h6 class="accordion-header font-base" id="heading1">
-              <button class="accordion-button fw-bold rounded collapsed pe-5" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapse1" aria-expanded="false">
-                Apa saja program yang tersedia di MPK-KOKEN?
-              </button>
-            </h6>
-            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-              <div class="accordion-body mt-3">
-                Kami menyediakan program pelatihan bahasa Jepang, budaya kerja Jepang, pelatihan mentalitas, serta persiapan magang, TG (Tokutei Ginou), dan Engineering ke Jepang.
+<div class="accordion accordion-icon accordion-shadow mt-4 text-start position-relative" id="accordionFAQ">
+          <?php if (!empty($faq)) : ?>
+            <?php foreach ($faq as $index => $item) : ?>
+              <div class="accordion-item mb-3">
+                <h6 class="accordion-header font-base" id="heading<?= $index ?>">
+                  <button class="accordion-button fw-bold rounded collapsed pe-5" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse<?= $index ?>" aria-expanded="false">
+                    <?= $item['question'] ?>
+                  </button>
+                </h6>
+                <div id="collapse<?= $index ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                  <div class="accordion-body mt-3">
+                    <?= $item['answer'] ?>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <!-- FAQ 2 -->
-          <div class="accordion-item mb-3">
-            <h6 class="accordion-header font-base" id="heading2">
-              <button class="accordion-button fw-bold rounded collapsed pe-5" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapse2" aria-expanded="false">
-                Apakah ada biaya pendaftaran?
-              </button>
-            </h6>
-            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-              <div class="accordion-body mt-3">
-                Ya, terdapat biaya pendaftaran awal untuk mengikuti seleksi dan pelatihan di LPK MPK-KOKEN. Informasi rinci akan disampaikan saat konsultasi awal.
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 3 -->
-          <div class="accordion-item mb-3">
-            <h6 class="accordion-header font-base" id="heading3">
-              <button class="accordion-button fw-bold rounded collapsed pe-5" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapse3" aria-expanded="false">
-                Berapa lama waktu persiapan sebelum keberangkatan?
-              </button>
-            </h6>
-            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-              <div class="accordion-body mt-3">
-                Rata-rata peserta menjalani pelatihan intensif selama 4–6 bulan sebelum keberangkatan ke Jepang, tergantung tingkat bahasa dan kesiapan dokumen.
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 4 -->
-          <div class="accordion-item mb-3">
-            <h6 class="accordion-header font-base" id="heading4">
-              <button class="accordion-button fw-bold rounded collapsed pe-5" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapse4" aria-expanded="false">
-                Apa saja syarat mendaftar program magang Jepang?
-              </button>
-            </h6>
-            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-              <div class="accordion-body mt-3">
-                Minimal lulusan SMA/sederajat, sehat jasmani & rohani, tidak buta warna, serta siap mengikuti pelatihan bahasa Jepang secara intensif.
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 5 -->
-          <div class="accordion-item mb-3">
-            <h6 class="accordion-header font-base" id="heading5">
-              <button class="accordion-button fw-bold rounded collapsed pe-5" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapse5" aria-expanded="false">
-                Apakah peserta dijamin berangkat ke Jepang?
-              </button>
-            </h6>
-            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-              <div class="accordion-body mt-3">
-                Kami memberikan bimbingan maksimal dan akses ke perusahaan mitra di Jepang. Namun, keberangkatan tetap tergantung hasil seleksi dan kelengkapan syarat peserta.
-              </div>
-            </div>
-          </div>
-
-          <!-- FAQ 6 - Alur Keberangkatan -->
-          <div class="accordion-item mb-3">
-            <h6 class="accordion-header font-base" id="heading-keberangkatan">
-              <button class="accordion-button fw-bold rounded collapsed pe-5" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapse-keberangkatan" aria-expanded="false">
-                Bagaimana alur keberangkatan ke Jepang melalui MPK-KOKEN?
-              </button>
-            </h6>
-            <div id="collapse-keberangkatan" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-              <div class="accordion-body mt-3">
-                <ol class="mb-0">
-                  <li><strong>Registrasi:</strong> Offline & online. Calon peserta masuk sekolah bahasa Jepang lokal.</li>
-                  <li><strong>Rekrutmen:</strong> Perusahaan Jepang mengirim lowongan ke mitra sekolah.</li>
-                  <li><strong>Seleksi Awal:</strong> Kandidat diseleksi dan dipilih untuk wawancara.</li>
-                  <li><strong>Wawancara:</strong> Dengan perusahaan Jepang dan lembaga pengawas.</li>
-                  <li><strong>Pelatihan Intensif:</strong> Sekitar 4 bulan di MPK-KOKEN.</li>
-                  <li><strong>Keberangkatan:</strong> Setelah pengurusan visa dan dokumen selesai.</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-
+            <?php endforeach; ?>
+          <?php else : ?>
+            <p class="text-center">Belum ada data FAQ.</p>
+          <?php endif; ?>
         </div>
         <!-- FAQ END -->
       </div>

@@ -5,6 +5,9 @@ class About_founder extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('About_founder_model');
+        if($this->session->userdata('level')==NULL){
+			redirect('auth');
+        }    
         $this->load->library('session');
     }
 

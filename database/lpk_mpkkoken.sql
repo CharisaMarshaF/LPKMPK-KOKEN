@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 13, 2025 at 04:00 PM
+-- Generation Time: Jul 15, 2025 at 01:59 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -169,7 +169,6 @@ CREATE TABLE `galeri` (
 
 INSERT INTO `galeri` (`id_galeri`, `foto`, `tanggal`) VALUES
 (47, '20250713Jul1524.jpg', '2025-07-13'),
-(48, '20250713151742_0.jpg', '2025-07-13'),
 (49, '20250713151742_1.jpg', '2025-07-13'),
 (50, '20250713151742_2.jpg', '2025-07-13'),
 (51, '20250713151742_3.jpg', '2025-07-13'),
@@ -238,15 +237,18 @@ CREATE TABLE `social_media` (
   `whatsapp_3` varchar(20) DEFAULT NULL,
   `active_whatsapp` enum('1','2','3') DEFAULT '1',
   `facebook` varchar(255) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL
+  `email` varchar(100) DEFAULT NULL,
+  `nama_wa1` varchar(35) NOT NULL,
+  `nama_wa2` varchar(35) NOT NULL,
+  `nama_wa3` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `social_media`
 --
 
-INSERT INTO `social_media` (`id`, `instagram`, `tiktok`, `whatsapp_1`, `whatsapp_2`, `whatsapp_3`, `active_whatsapp`, `facebook`, `email`) VALUES
-(1, 'tes', 'tes', '6285229654768', '098', '09092112', '1', 'tes', 'tes@gmail.com');
+INSERT INTO `social_media` (`id`, `instagram`, `tiktok`, `whatsapp_1`, `whatsapp_2`, `whatsapp_3`, `active_whatsapp`, `facebook`, `email`, `nama_wa1`, `nama_wa2`, `nama_wa3`) VALUES
+(1, 'tes', 'tes', '6285229654768', '098', '09092112', '1', 'tes', 'tes@gmail.com', 'ninik', 'nunik', 'nini');
 
 -- --------------------------------------------------------
 
@@ -291,7 +293,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama`, `password`, `level`, `recent_login`) VALUES
-(7, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2025-07-13 19:34:39'),
+(7, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2025-07-15 19:37:08'),
 (9, 'Binco Ran Nusantara', 'Binco Ran Nusantara', 'b79e3f61af120786a60dcf8ff7bb494d', 'admin', NULL);
 
 --
@@ -410,7 +412,7 @@ ALTER TABLE `faq`
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id_galeri` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_galeri` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`

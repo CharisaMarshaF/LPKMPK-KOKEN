@@ -25,7 +25,7 @@
 			<!-- BEGIN: Logo -->
 			<a href="<?= base_url('/'); ?>" class="logo -intro-x hidden md:flex xl:w-[180px] block">
 				<img alt="Binco App Logo" class="logo__image w-16"
-					src="<?= base_url('assets/assets/img/logo-remove.png'); ?>">
+					src="<?= base_url('assets/assets/img/logo_outline.png'); ?>">
 				<span class="logo__text text-white text-xl ml-3"> LPK MPKKOKEN </span>
 			</a>
 			<!-- END: Logo -->

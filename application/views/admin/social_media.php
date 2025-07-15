@@ -43,17 +43,31 @@
 									</div>
 
 									<div class="mb-4">
+										<label for="nama_wa1" class="form-label">Nama WhatsApp 1</label>
+										<input type="text" name="nama_wa1" id="nama_wa1"
+											value="<?= $sosmed->nama_wa1 ?? '' ?>" class="form-control">
+									</div>
+
+									<div class="mb-4">
 										<label for="whatsapp_1" class="form-label">WhatsApp 1</label>
 										<input type="text" name="whatsapp_1" id="whatsapp_1"
 											value="<?= $sosmed->whatsapp_1 ?? '' ?>" class="form-control">
 									</div>
-
+									<div class="mb-4">
+										<label for="nama_wa2" class="form-label">Nama WhatsApp 2</label>
+										<input type="text" name="nama_wa2" id="nama_wa2"
+											value="<?= $sosmed->nama_wa2 ?? '' ?>" class="form-control">
+									</div>
 									<div class="mb-4">
 										<label for="whatsapp_2" class="form-label">WhatsApp 2</label>
 										<input type="text" name="whatsapp_2" id="whatsapp_2"
 											value="<?= $sosmed->whatsapp_2 ?? '' ?>" class="form-control">
 									</div>
-
+									<div class="mb-4">
+										<label for="nama_wa3" class="form-label">Nama WhatsApp 3</label>
+										<input type="text" name="nama_wa3" id="nama_wa3"
+											value="<?= $sosmed->nama_wa3 ?? '' ?>" class="form-control">
+									</div>
 									<div class="mb-4">
 										<label for="whatsapp_3" class="form-label">WhatsApp 3</label>
 										<input type="text" name="whatsapp_3" id="whatsapp_3"
@@ -85,12 +99,4 @@
 				</div>
 			</div>
 		</div>
-<?php
-// Cek dan ambil nomor aktif berdasarkan nilai active_whatsapp
-$activeKey = 'whatsapp_' . ($sosmed->active_whatsapp ?? '1');
-$nomorAktif = $sosmed->$activeKey ?? '-';
-?>
 
-<div class="alert alert-info">
-    <strong>Nomor WhatsApp Aktif Saat Ini:</strong> <?= $nomorAktif ?>
-</div>

@@ -32,6 +32,9 @@ class Social_media extends CI_Controller {
             'whatsapp_1' => $this->input->post('whatsapp_1'),
             'whatsapp_2' => $this->input->post('whatsapp_2'),
             'whatsapp_3' => $this->input->post('whatsapp_3'),
+            'nama_wa1' => $this->input->post('nama_wa1'),
+            'nama_wa2' => $this->input->post('nama_wa2'),
+            'nama_wa3' => $this->input->post('nama_wa3'),
             'active_whatsapp' => $this->input->post('active_whatsapp'),
         ];
 

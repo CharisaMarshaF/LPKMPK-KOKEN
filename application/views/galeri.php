@@ -50,7 +50,7 @@ Gallery START-->
 					<div class="col-12 mx-auto text-center">
 						<h2 class="fs-1 fw-bold">
 							<span class="position-relative z-index-9"><?= $this->lang->line('gallery') ?></span>
-							<span class="position-relative z-index-1">Dokumentasi Kegiatan
+							<span class="position-relative z-index-1">Galeri Foto
 								<!-- SVG START -->
 								<span
 									class="position-absolute top-50 start-50 translate-middle z-index-n1 d-none d-sm-block">

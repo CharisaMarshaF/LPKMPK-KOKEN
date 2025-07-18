@@ -111,7 +111,15 @@
 						<div class="side-menu__title"> Galeri </div>
 					</a>
 				</li>
+				<li>
+					<a href="<?= site_url('admin/dokumentasi') ?>"
+						class="side-menu <?php if($menu=='dokumentasi'){ echo"side-menu--active"; } ?>">
+						<div class="side-menu__icon"><i data-lucide="book-open"></i></div>
+						<div class="side-menu__title"> Dokumentasi </div>
+					</a>
+				</li>
 
+				
 				<li>
 					<a href="<?= site_url('admin/about') ?>"
 						class="side-menu <?php if($menu=='about'){ echo"side-menu--active"; } ?>">

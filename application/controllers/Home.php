@@ -18,7 +18,7 @@ class Home extends CI_Controller {
         
         $this->db->where('status', 'publish');
         $testimoni = $this->db->get('testimoni')->result_array();
-
+        $documentation = $this->db->get('documentation')->result_array();
         $sosmed = $this->db->get('social_media')->row();
         $active_number = '';
         if ($sosmed) {
@@ -41,6 +41,7 @@ class Home extends CI_Controller {
             'features'        => $features,
             'active_whatsapp' => $active_number,
             'sosmed'          => $sosmed,
+            'documentation'   => $documentation,
         );
 
         $this->load->view('beranda', $data);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 15, 2025 at 01:59 PM
+-- Generation Time: Jul 18, 2025 at 04:39 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -126,6 +126,32 @@ CREATE TABLE `caraousel` (
 
 INSERT INTO `caraousel` (`id_caraousel`, `judul`, `foto`, `deskripsi`) VALUES
 (50, 'LPK MPK-KOKEN', '20250708Jul5618.jpg', 'Lembaga Pelatihan Kerja Jepang - Indonesia\r\nMagang • Tokutei Ginou • Engineering\r\nRaih masa depan global bersama kami');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documentation`
+--
+
+CREATE TABLE `documentation` (
+  `id` int NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `documentation`
+--
+
+INSERT INTO `documentation` (`id`, `judul`, `foto`) VALUES
+(12, 'kegiatan materi', '20250718043530_1.jpg'),
+(13, 'kegiatan materi', '20250718043530_2.jpg'),
+(14, 'kegiatan materi', '20250718043530_3.jpg'),
+(15, 'kegiatan materi', '20250718043530_4.jpg'),
+(16, 'kegiatan materi', '20250718043530_5.jpg'),
+(17, 'kegiatan materi', '20250718043530_6.jpg'),
+(18, 'kegiatan materi', '20250718043530_7.jpg'),
+(19, 'materi', '20250718043719_0.jpg');
 
 -- --------------------------------------------------------
 
@@ -293,7 +319,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama`, `password`, `level`, `recent_login`) VALUES
-(7, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2025-07-15 19:37:08'),
+(7, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2025-07-18 10:25:05'),
 (9, 'Binco Ran Nusantara', 'Binco Ran Nusantara', 'b79e3f61af120786a60dcf8ff7bb494d', 'admin', NULL);
 
 --
@@ -331,6 +357,12 @@ ALTER TABLE `about_founder_features`
 --
 ALTER TABLE `caraousel`
   ADD PRIMARY KEY (`id_caraousel`);
+
+--
+-- Indexes for table `documentation`
+--
+ALTER TABLE `documentation`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faq`
@@ -403,6 +435,12 @@ ALTER TABLE `caraousel`
   MODIFY `id_caraousel` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
+-- AUTO_INCREMENT for table `documentation`
+--
+ALTER TABLE `documentation`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT for table `faq`
 --
 ALTER TABLE `faq`
@@ -412,7 +450,7 @@ ALTER TABLE `faq`
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id_galeri` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_galeri` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`

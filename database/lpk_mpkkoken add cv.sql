@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 15, 2025 at 01:59 PM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Jul 18, 2025 at 03:19 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `about` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `image_main` varchar(255) NOT NULL,
@@ -49,8 +49,8 @@ INSERT INTO `about` (`id`, `title`, `description`, `image_main`, `image_secondar
 --
 
 CREATE TABLE `about_features` (
-  `id` int NOT NULL,
-  `about_id` int DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `about_id` int(11) DEFAULT NULL,
   `text` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -70,12 +70,12 @@ INSERT INTO `about_features` (`id`, `about_id`, `text`) VALUES
 --
 
 CREATE TABLE `about_founder` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `subtitle` varchar(255) DEFAULT NULL,
-  `description` text,
-  `paragraph_1` text,
-  `paragraph_2` text,
+  `description` text DEFAULT NULL,
+  `paragraph_1` text DEFAULT NULL,
+  `paragraph_2` text DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -93,8 +93,8 @@ INSERT INTO `about_founder` (`id`, `title`, `subtitle`, `description`, `paragrap
 --
 
 CREATE TABLE `about_founder_features` (
-  `id` int NOT NULL,
-  `about_founder_id` int DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `about_founder_id` int(11) DEFAULT NULL,
   `text` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -114,10 +114,10 @@ INSERT INTO `about_founder_features` (`id`, `about_founder_id`, `text`) VALUES
 --
 
 CREATE TABLE `caraousel` (
-  `id_caraousel` int NOT NULL,
-  `judul` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `foto` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `deskripsi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci
+  `id_caraousel` int(11) NOT NULL,
+  `judul` varchar(100) DEFAULT NULL,
+  `foto` varchar(50) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -130,14 +130,96 @@ INSERT INTO `caraousel` (`id_caraousel`, `judul`, `foto`, `deskripsi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cv`
+--
+
+CREATE TABLE `cv` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `alamat` varchar(150) NOT NULL,
+  `jenis_kelamin` varchar(20) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `menikah` varchar(50) NOT NULL,
+  `tinggi_badan` varchar(10) NOT NULL,
+  `berat_badan` varchar(10) NOT NULL,
+  `buta_warna` varchar(15) NOT NULL,
+  `golongan_darah` varchar(2) NOT NULL,
+  `tangan_dominan` varchar(20) NOT NULL,
+  `operasi` varchar(20) NOT NULL,
+  `alkohol` varchar(6) NOT NULL,
+  `merokok` varchar(6) NOT NULL,
+  `tato` varchar(6) NOT NULL,
+  `agama` varchar(20) NOT NULL,
+  `tempat_lahir` varchar(40) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
+  `no_ktp` varchar(50) NOT NULL,
+  `motivasi` varchar(150) NOT NULL,
+  `promosi` varchar(150) NOT NULL,
+  `kelebihan` varchar(150) NOT NULL,
+  `kekurangan` varchar(150) NOT NULL,
+  `hobi` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cv_keluarga`
+--
+
+CREATE TABLE `cv_keluarga` (
+  `id` int(11) NOT NULL,
+  `id_cv` int(11) NOT NULL,
+  `hubungan` varchar(20) NOT NULL,
+  `nama` varchar(60) NOT NULL,
+  `usia` int(11) NOT NULL,
+  `serumah` varchar(6) NOT NULL,
+  `tempat_tinggal` varchar(50) NOT NULL,
+  `pekerjaan` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cv_pendidikan`
+--
+
+CREATE TABLE `cv_pendidikan` (
+  `id` int(11) NOT NULL,
+  `id_cv` int(11) NOT NULL,
+  `jenjang` varchar(20) NOT NULL,
+  `tahun_mulai` int(11) NOT NULL,
+  `tahun_berakhir` int(11) NOT NULL,
+  `sekolah` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cv_pengalaman`
+--
+
+CREATE TABLE `cv_pengalaman` (
+  `id` int(11) NOT NULL,
+  `id_cv` int(11) NOT NULL,
+  `tahun_awal` int(11) NOT NULL,
+  `tahun_berakhir` int(11) NOT NULL,
+  `tempat` varchar(40) NOT NULL,
+  `sebagai` varchar(30) NOT NULL,
+  `alamat` varchar(100) NOT NULL,
+  `gaji` decimal(15,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `faq`
 --
 
 CREATE TABLE `faq` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `question` text NOT NULL,
   `answer` text NOT NULL,
-  `status` tinyint(1) DEFAULT '1'
+  `status` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -158,8 +240,8 @@ INSERT INTO `faq` (`id`, `question`, `answer`, `status`) VALUES
 --
 
 CREATE TABLE `galeri` (
-  `id_galeri` int NOT NULL,
-  `foto` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id_galeri` int(11) NOT NULL,
+  `foto` varchar(30) NOT NULL,
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -208,11 +290,11 @@ INSERT INTO `galeri` (`id_galeri`, `foto`, `tanggal`) VALUES
 --
 
 CREATE TABLE `konfigurasi` (
-  `id_konfigurasi` int NOT NULL,
-  `judul_website` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `profil_website` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `alamat` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `google_maps_link` text COLLATE utf8mb4_general_ci NOT NULL
+  `id_konfigurasi` int(11) NOT NULL,
+  `judul_website` varchar(60) NOT NULL,
+  `profil_website` text DEFAULT NULL,
+  `alamat` varchar(200) DEFAULT NULL,
+  `google_maps_link` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -229,7 +311,7 @@ INSERT INTO `konfigurasi` (`id_konfigurasi`, `judul_website`, `profil_website`, 
 --
 
 CREATE TABLE `social_media` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `instagram` varchar(255) DEFAULT NULL,
   `tiktok` varchar(255) DEFAULT NULL,
   `whatsapp_1` varchar(20) DEFAULT NULL,
@@ -257,10 +339,10 @@ INSERT INTO `social_media` (`id`, `instagram`, `tiktok`, `whatsapp_1`, `whatsapp
 --
 
 CREATE TABLE `testimoni` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `nama` varchar(35) NOT NULL,
   `isi` text NOT NULL,
-  `status` enum('publish','draft') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `status` enum('publish','draft') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -280,11 +362,11 @@ INSERT INTO `testimoni` (`id`, `nama`, `isi`, `status`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id_user` int NOT NULL,
-  `username` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nama` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `password` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `level` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `id_user` int(11) NOT NULL,
+  `username` varchar(70) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL,
+  `level` varchar(50) DEFAULT NULL,
   `recent_login` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -293,7 +375,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama`, `password`, `level`, `recent_login`) VALUES
-(7, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2025-07-15 19:37:08'),
+(7, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2025-07-16 13:22:58'),
 (9, 'Binco Ran Nusantara', 'Binco Ran Nusantara', 'b79e3f61af120786a60dcf8ff7bb494d', 'admin', NULL);
 
 --
@@ -331,6 +413,30 @@ ALTER TABLE `about_founder_features`
 --
 ALTER TABLE `caraousel`
   ADD PRIMARY KEY (`id_caraousel`);
+
+--
+-- Indexes for table `cv`
+--
+ALTER TABLE `cv`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cv_keluarga`
+--
+ALTER TABLE `cv_keluarga`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cv_pendidikan`
+--
+ALTER TABLE `cv_pendidikan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cv_pengalaman`
+--
+ALTER TABLE `cv_pengalaman`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faq`
@@ -376,67 +482,91 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `about_features`
 --
 ALTER TABLE `about_features`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `about_founder`
 --
 ALTER TABLE `about_founder`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `about_founder_features`
 --
 ALTER TABLE `about_founder_features`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `caraousel`
 --
 ALTER TABLE `caraousel`
-  MODIFY `id_caraousel` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_caraousel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `cv`
+--
+ALTER TABLE `cv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cv_keluarga`
+--
+ALTER TABLE `cv_keluarga`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cv_pendidikan`
+--
+ALTER TABLE `cv_pendidikan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cv_pengalaman`
+--
+ALTER TABLE `cv_pengalaman`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `faq`
 --
 ALTER TABLE `faq`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
-  MODIFY `id_galeri` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
-  MODIFY `id_konfigurasi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_konfigurasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `social_media`
 --
 ALTER TABLE `social_media`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `testimoni`
 --
 ALTER TABLE `testimoni`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

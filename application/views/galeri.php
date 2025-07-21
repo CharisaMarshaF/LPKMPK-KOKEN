@@ -42,7 +42,7 @@ Gallery START-->
 </style>
 
 		<!-- =======================
-Gallery START-->
+			Gallery START-->
 		<section class="pt-0 pt-md-5">
 			<div class="container">
 				<!-- Title -->

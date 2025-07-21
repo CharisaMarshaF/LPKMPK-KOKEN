@@ -18,30 +18,30 @@
 
 		<!-- =======================
 Gallery START-->
-		<style>
-			.masonry-grid {
-				column-count: 3;
-				/* jumlah kolom di desktop */
-				column-gap: 1.5rem;
-			}
 
-			@media (max-width: 992px) {
-				.masonry-grid {
-					column-count: 2;
-				}
-			}
+<style>
+	.masonry-grid {
+    column-count: 3; /* jumlah kolom di desktop */
+    column-gap: 1.5rem;
+}
 
-			@media (max-width: 576px) {
-				.masonry-grid {
-					column-count: 1;
-				}
-			}
+@media (max-width: 992px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+}
+@media (max-width: 576px) {
+    .masonry-grid {
+        column-count: 1;
+    }
+}
 
-			.masonry-item {
-				break-inside: avoid;
-				margin-bottom: 1.5rem;
-			}
-		</style>
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+}
+
+</style>
 
 		<!-- =======================
 Gallery START-->
@@ -246,10 +246,7 @@ Gallery START-->
 					</div>
 				</div>
 		</section>
-		<!-- =======================
 
-
-    
 	</main>
 
 	<?php require_once('_footer.php')?>

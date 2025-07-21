@@ -125,7 +125,7 @@
 
 				<!-- Button Daftar -->
 				<div class="text-center text-lg-end">
-					<a href="#" class="btn btn-primary ms-lg-3 mt-3 mt-lg-0">
+					<a href="<?= base_url('daftar') ?>" class="btn btn-primary ms-lg-3 mt-3 mt-lg-0">
 						<i class="bi bi-pencil-square me-1"></i> Daftar
 					</a>
 				</div>

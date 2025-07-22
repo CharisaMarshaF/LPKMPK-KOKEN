@@ -19,29 +19,31 @@
 		<!-- =======================
 Gallery START-->
 
-<style>
-	.masonry-grid {
-    column-count: 3; /* jumlah kolom di desktop */
-    column-gap: 1.5rem;
-}
+		<style>
+			.masonry-grid {
+				column-count: 3;
+				/* jumlah kolom di desktop */
+				column-gap: 1.5rem;
+			}
 
-@media (max-width: 992px) {
-    .masonry-grid {
-        column-count: 2;
-    }
-}
-@media (max-width: 576px) {
-    .masonry-grid {
-        column-count: 1;
-    }
-}
+			@media (max-width: 992px) {
+				.masonry-grid {
+					column-count: 2;
+				}
+			}
 
-.masonry-item {
-    break-inside: avoid;
-    margin-bottom: 1.5rem;
-}
+			@media (max-width: 576px) {
+				.masonry-grid {
+					column-count: 1;
+				}
+			}
 
-</style>
+			.masonry-item {
+				break-inside: avoid;
+				margin-bottom: 1.5rem;
+			}
+
+		</style>
 
 		<!-- =======================
 Gallery START-->
@@ -72,188 +74,33 @@ Gallery START-->
 				</div>
 				<div class="row g-4 g-sm-5 ">
 					<div class="col-xl-12 mb-4 mb-sm-0">
-						<div class="card card-body shadow p-4">
-							<h5 class="mb-4">Form Pendaftaran</h5>
-							<form action="proses_pendaftaran.php" method="POST" class="row g-3">
-								<!-- Kolom Kiri -->
-								<div class="col-md-6">
-									<label for="id" class="form-label">ID</label>
-									<input type="text" name="id" id="id" class="form-control" required>
-								</div>
-
-								<div class="col-md-6">
-									<label for="nama" class="form-label">Nama</label>
-									<input type="text" name="nama" id="nama" class="form-control" required>
-								</div>
-
-								<div class="col-md-12">
-									<label for="alamat" class="form-label">Alamat</label>
-									<textarea name="alamat" id="alamat" rows="2" class="form-control"
-										required></textarea>
-								</div>
-
-								<div class="col-md-6">
-									<label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-									<select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
-										<option value="">Pilih</option>
-										<option value="Laki-laki">Laki-laki</option>
-										<option value="Perempuan">Perempuan</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-									<input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control">
-								</div>
-
-								<div class="col-md-6">
-									<label for="menikah" class="form-label">Status Menikah</label>
-									<select name="menikah" id="menikah" class="form-select">
-										<option value="Belum">Belum</option>
-										<option value="Sudah">Sudah</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="tinggi_badan" class="form-label">Tinggi Badan (cm)</label>
-									<input type="number" name="tinggi_badan" id="tinggi_badan" class="form-control">
-								</div>
-
-								<div class="col-md-6">
-									<label for="berat_badan" class="form-label">Berat Badan (kg)</label>
-									<input type="number" name="berat_badan" id="berat_badan" class="form-control">
-								</div>
-
-								<div class="col-md-6">
-									<label for="buta_warna" class="form-label">Buta Warna</label>
-									<select name="buta_warna" id="buta_warna" class="form-select">
-										<option value="Tidak">Tidak</option>
-										<option value="Parsial">Parsial</option>
-										<option value="Total">Total</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="golongan_darah" class="form-label">Golongan Darah</label>
-									<select name="golongan_darah" id="golongan_darah" class="form-select">
-										<option value="">Pilih</option>
-										<option value="A">A</option>
-										<option value="B">B</option>
-										<option value="AB">AB</option>
-										<option value="O">O</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="tangan_dominan" class="form-label">Tangan Dominan</label>
-									<select name="tangan_dominan" id="tangan_dominan" class="form-select">
-										<option value="Kanan">Kanan</option>
-										<option value="Kiri">Kiri</option>
-										<option value="Keduanya">Keduanya</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="operasi" class="form-label">Pernah Operasi</label>
-									<select name="operasi" id="operasi" class="form-select">
-										<option value="Tidak">Tidak</option>
-										<option value="Ya">Ya</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="alkohol" class="form-label">Konsumsi Alkohol</label>
-									<select name="alkohol" id="alkohol" class="form-select">
-										<option value="Tidak">Tidak</option>
-										<option value="Ya">Ya</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="merokok" class="form-label">Merokok</label>
-									<select name="merokok" id="merokok" class="form-select">
-										<option value="Tidak">Tidak</option>
-										<option value="Ya">Ya</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="tato" class="form-label">Memiliki Tato</label>
-									<select name="tato" id="tato" class="form-select">
-										<option value="Tidak">Tidak</option>
-										<option value="Ya">Ya</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="agama" class="form-label">Agama</label>
-									<select name="agama" id="agama" class="form-select">
-										<option value="Islam">Islam</option>
-										<option value="Kristen">Kristen</option>
-										<option value="Katolik">Katolik</option>
-										<option value="Hindu">Hindu</option>
-										<option value="Buddha">Buddha</option>
-										<option value="Lainnya">Lainnya</option>
-									</select>
-								</div>
-
-								<div class="col-md-6">
-									<label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-									<input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control">
-								</div>
-
-								<div class="col-md-6">
-									<label for="no_telp" class="form-label">No. Telepon</label>
-									<input type="text" name="no_telp" id="no_telp" class="form-control">
-								</div>
-
-								<div class="col-md-6">
-									<label for="no_ktp" class="form-label">No. KTP</label>
-									<input type="text" name="no_ktp" id="no_ktp" class="form-control">
-								</div>
-
-								<div class="col-md-6">
-									<label for="hobi" class="form-label">Hobi</label>
-									<input type="text" name="hobi" id="hobi" class="form-control">
-								</div>
-
-								<div class="col-md-6">
-									<label for="promosi" class="form-label">Tahu dari mana?</label>
-									<input type="text" name="promosi" id="promosi" class="form-control">
-								</div>
-
-								<div class="col-md-12">
-									<label for="motivasi" class="form-label">Motivasi Mengikuti Pelatihan</label>
-									<textarea name="motivasi" id="motivasi" rows="2" class="form-control"></textarea>
-								</div>
-
-								<div class="col-md-12">
-									<label for="kelebihan" class="form-label">Kelebihan</label>
-									<textarea name="kelebihan" id="kelebihan" rows="2" class="form-control"></textarea>
-								</div>
-
-								<div class="col-md-12">
-									<label for="kekurangan" class="form-label">Kekurangan</label>
-									<textarea name="kekurangan" id="kekurangan" rows="2"
-										class="form-control"></textarea>
-								</div>
-
-								<div class="col-12 text- mt-3">
-									<button type="submit" class="btn btn-primary px-4 py-2">Daftar Sekarang</button>
-								</div>
-							</form>
-						</div>
+						<?php require_once('daftarForm.php') ?>
 					</div>
 				</div>
 		</section>
 
 	</main>
 
+
 	<?php require_once('_footer.php')?>
 
 	<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
 	<?php require_once('_js.php')?>
+
+	<?php if ($this->session->flashdata('sukses')): ?>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			Swal.fire({
+				icon: 'success',
+				title: 'Berhasil!',
+				text: '<?= $this->session->flashdata('sukses') ?>',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'OK'
+			});
+		});
+	</script>
+	<?php endif; ?>
 
 
 </body>

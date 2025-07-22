@@ -147,16 +147,4 @@ class Home extends CI_Controller {
         );
         $this->load->view('faq', $data);
     }
-    
-    public function daftar(){
-         $this->db->from('konfigurasi');
-        $konfig = $this->db->get()->row();
-        $data = array(
-            'judul' => "Tentang Kami | Binco Ran Nusantara",
-            'konfig' => $konfig,
-            
-        );
-        $this->load->view('daftar', $data);
-    }
-    
 }

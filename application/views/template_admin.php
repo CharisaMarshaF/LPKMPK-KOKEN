@@ -23,9 +23,7 @@
 		class="top-bar-boxed h-[70px] md:h-[65px] z-[51] border-b border-white/[0.08] mt-12 md:mt-0 -mx-3 sm:-mx-8 md:-mx-0 px-3 md:border-b-0 relative md:fixed md:inset-x-0 md:top-0 sm:px-8 md:px-10 md:pt-10 md:bg-gradient-to-b md:from-slate-100 md:to-transparent dark:md:from-darkmode-700">
 		<div class="h-full flex items-center">
 			<!-- BEGIN: Logo -->
-			<a href="<?= base_url('/'); ?>" class="logo -intro-x hidden md:flex xl:w-[180px] block">
-				<img alt="Binco App Logo" class="logo__image w-16"
-					src="<?= base_url('assets/assets/img/logo_outline.png'); ?>">
+			<a href="<?= base_url('/'); ?>" class="logo -intro-x hidden md:flex block">
 				<span class="logo__text text-white text-xl ml-3"> LPK MPKKOKEN </span>
 			</a>
 			<!-- END: Logo -->
@@ -79,7 +77,13 @@
 						<div class="side-menu__title"> Dashboard </div>
 					</a>
 				</li>
-
+				<li>
+					<a href="<?= site_url('admin/pendaftaran') ?>"
+						class="side-menu <?php if($menu=='pendaftaran'){ echo"side-menu--active"; } ?>">
+						<div class="side-menu__icon"><i data-lucide="file"></i></div>
+						<div class="side-menu__title"> Pendaftaran </div>
+					</a>
+				</li>
 				<li>
 					<a href="<?= site_url('admin/caraousel') ?>"
 						class="side-menu <?php if($menu=='caraousel'){ echo"side-menu--active"; } ?>">

@@ -167,7 +167,7 @@
 				.swal2-container {
 					z-index: 9999 !important;
 				}
-			</style>d
+			</style>
 			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 			<script>

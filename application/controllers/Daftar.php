@@ -22,6 +22,13 @@ class Daftar extends CI_Controller {
          $this->load->view('daftar', $data);
     }
     public function submit(){
+        $ceknik = $this->input->post('nik');
+        $this->db->where('nik', $ceknik);
+        $cek = $this->db->get('cv')->num_rows();
+        if ($cek > 0) {
+            $this->session->set_flashdata('gagal', 'NIK sudah terdaftar, silahkan gunakan NIK lain. Atau hubungi admin untuk bantuan bahwa NIK sudah digunakan di sistem.');
+            redirect('daftar');
+        }
         // Ambil input utama
         $data_cv = [
             'nik'             => $this->input->post('nik'),

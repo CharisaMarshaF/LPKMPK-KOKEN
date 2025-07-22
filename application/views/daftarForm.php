@@ -415,7 +415,7 @@
                         <option value="SD">SD</option>
                         <option value="SMP">SMP</option>
                         <option value="SMA/SMK">SMA/SMK</option>
-                        <option value="Universitas">Universitas</option>
+                        <option value="Kuliah">Kuliah</option>
                     </select>
                 </div>
                 <div class="col-input col-input-education-year">
@@ -525,7 +525,7 @@
                     </select>
                 </div>
                 <div class="col-input col-input-family-address">
-                    <label class="form-label-sub">Tempat Tinggal</label>
+                    <label class="form-label-sub">Negara Tempat Tinggal</label>
                     <input type="text" id="keluarga_tempat" class="form-control-custom">
                 </div>
                 <div class="col-input col-input-family-job">

@@ -263,10 +263,14 @@ CREATE TABLE `social_media` (
   `whatsapp_3` varchar(20) DEFAULT NULL,
   `active_whatsapp` enum('1','2','3') DEFAULT '1',
   `facebook` varchar(255) DEFAULT NULL,
+<<<<<<< Updated upstream
   `email` varchar(100) DEFAULT NULL,
   `nama_wa1` varchar(35) NOT NULL,
   `nama_wa2` varchar(35) NOT NULL,
   `nama_wa3` varchar(35) NOT NULL
+=======
+  `email` varchar(100) DEFAULT NULL
+>>>>>>> Stashed changes
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

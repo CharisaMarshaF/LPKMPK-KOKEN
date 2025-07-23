@@ -1,9 +1,5 @@
-
 <!DOCTYPE html>
-
-
 <html lang="en">
-
 <head>
     <title>LPK MPK-KOKEN - Pelatihan dan Penyaluran Kerja ke Jepang</title>
 
@@ -11,18 +7,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="LPK MPK-KOKEN">
-    <meta name="description"
-        content="LPK MPK-KOKEN adalah lembaga pelatihan kerja profesional yang menyediakan program magang, engineering, dan tokutei ginou ke Jepang. Bimbingan intensif dan jalur penyaluran resmi.">
-  <!-- Open Graph (for social media preview) -->
-  <meta property="og:title" content="LPK MPK-KOKEN - Pelatihan dan Penyaluran Kerja ke Jepang" />
-  <meta property="og:description" content="LPK MPK-KOKEN menyediakan program pelatihan magang, engineering, dan tokutei ginou ke Jepang. Bimbingan intensif dan jalur resmi." />
-  <meta property="og:image" content="<?= base_url('assets/assets/img/logo.png'); ?>" />
-  <meta property="og:url" content="<?= base_url(); ?>" />
-  <meta property="og:type" content="website" />
-    <!-- Favicon -->
-    <link rel="icon" href="<?= base_url('assets/assets/img/logo.png'); ?>" type="image/x-icon">
+    <meta name="description" content="LPK MPK-KOKEN adalah lembaga pelatihan kerja profesional yang menyediakan program magang, engineering, dan tokutei ginou ke Jepang. Bimbingan intensif dan jalur penyaluran resmi.">
 
-    <!-- Dark mode -->
+    <!-- Open Graph (for social media preview) -->
+    <meta property="og:title" content="LPK MPK-KOKEN - Pelatihan dan Penyaluran Kerja ke Jepang" />
+    <meta property="og:description" content="LPK MPK-KOKEN menyediakan program pelatihan magang, engineering, dan tokutei ginou ke Jepang. Bimbingan intensif dan jalur resmi." />
+    <meta property="og:image" content="<?= base_url('assets/assets/img/logo.png'); ?>" />
+    <meta property="og:url" content="<?= base_url(); ?>" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card (optional but good for Twitter/Telegram) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LPK MPK-KOKEN - Pelatihan dan Penyaluran Kerja ke Jepang" />
+    <meta name="twitter:description" content="LPK MPK-KOKEN menyediakan program pelatihan ke Jepang secara resmi dan profesional." />
+    <meta name="twitter:image" content="<?= base_url('assets/assets/img/logo.png'); ?>" />
+
+    <!-- Favicon & Apple Touch Icon -->
+    <link rel="icon" href="<?= base_url('assets/assets/img/logo.png'); ?>" type="image/png">
+    <link rel="apple-touch-icon" href="<?= base_url('assets/assets/img/logo.png'); ?>">
+
+    <!-- Dark mode support -->
     <meta name="color-scheme" content="light dark">
 
     <script>

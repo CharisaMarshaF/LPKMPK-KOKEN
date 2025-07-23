@@ -25,33 +25,34 @@ public function simpan() {
 
     $upload_path = 'assets/upload/galeri/';
     $allowed_types = 'jpg|jpeg|png|webp';
-    $max_size = 10 * 1024; // 10 MB
+    $max_size = 10 * 1024; 
 
     $this->load->library('upload');
+    $this->load->library('image_lib');
 
     $success_count = 0;
     $error_count = 0;
     $messages = [];
 
     for ($i = 0; $i < $count; $i++) {
-        $_FILES['foto_temp']['name'] = $files['foto']['name'][$i];
-        $_FILES['foto_temp']['type'] = $files['foto']['type'][$i];
+        $_FILES['foto_temp']['name']     = $files['foto']['name'][$i];
+        $_FILES['foto_temp']['type']     = $files['foto']['type'][$i];
         $_FILES['foto_temp']['tmp_name'] = $files['foto']['tmp_name'][$i];
-        $_FILES['foto_temp']['error'] = $files['foto']['error'][$i];
-        $_FILES['foto_temp']['size'] = $files['foto']['size'][$i];
+        $_FILES['foto_temp']['error']    = $files['foto']['error'][$i];
+        $_FILES['foto_temp']['size']     = $files['foto']['size'][$i];
 
         $namafoto = date('YmdHis') . '_' . $i . '.jpg';
 
-        $config['upload_path'] = $upload_path;
+        $config['upload_path']   = $upload_path;
         $config['allowed_types'] = $allowed_types;
-        $config['max_size'] = $max_size;
-        $config['file_name'] = $namafoto;
+        $config['max_size']      = $max_size;
+        $config['file_name']     = $namafoto;
 
         $this->upload->initialize($config);
 
         if ($_FILES['foto_temp']['size'] > 10 * 1024 * 1024) {
             $error_count++;
-            $messages[] = $_FILES['foto_temp']['name'] . ' melebihi 10MB';
+            $messages[] = $_FILES['foto_temp']['name'] . ' melebihi 10MB.';
             continue;
         }
 
@@ -61,7 +62,32 @@ public function simpan() {
             continue;
         }
 
-        // Insert ke database jika upload berhasil
+        $upload_data = $this->upload->data();
+        $file_path = $upload_data['full_path'];
+
+        // Cek ukuran hasil upload
+        if (filesize($file_path) > 1 * 1024 * 1024) { // jika lebih dari 1MB
+            $resize_config['image_library']   = 'gd2';
+            $resize_config['source_image']    = $file_path;
+            $resize_config['quality']         = '75'; // kompresi
+            $resize_config['maintain_ratio']  = TRUE;
+            $resize_config['width']           = 1280; // batas maksimal ukuran
+            $resize_config['height']          = 1280;
+            $resize_config['overwrite']       = TRUE;
+
+            $this->image_lib->initialize($resize_config);
+
+            if (!$this->image_lib->resize()) {
+                $error_count++;
+                $messages[] = 'Gagal resize ' . $namafoto . ': ' . strip_tags($this->image_lib->display_errors());
+                $this->image_lib->clear();
+                continue;
+            }
+
+            $this->image_lib->clear();
+        }
+
+        // Simpan ke database
         $data = [
             'foto' => $namafoto,
             'tanggal' => date('Y-m-d')
@@ -78,6 +104,7 @@ public function simpan() {
 
     redirect('admin/galeri');
 }
+
 
     public function delete_data($id){
         $filename = FCPATH . '/assets/upload/galeri/'.$id;

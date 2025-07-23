@@ -79,19 +79,45 @@ class About extends CI_Controller
         redirect('admin/about');
     }
 
-    private function _upload_file($field)
-    {
-        $config['upload_path']   = './assets/upload/about/';
-        $config['allowed_types'] = 'jpg|jpeg|png|webp';
-        $config['max_size']      = 5048;
-        $config['encrypt_name']  = TRUE;
+private function _upload_file($field)
+{
+    $config['upload_path']   = './assets/upload/about/';
+    $config['allowed_types'] = 'jpg|jpeg|png|webp';
+    $config['max_size']      = 5048; // 5MB batas awal
+    $config['encrypt_name']  = TRUE;
 
-        $this->load->library('upload', $config);
+    $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload($field)) {
-            return $this->upload->data('file_name');
-        }
-
+    if (!$this->upload->do_upload($field)) {
         return false;
     }
+
+    $file_data = $this->upload->data();
+    $file_path = $file_data['full_path'];
+
+    // Cek jika ukuran file lebih dari 1MB, lalu resize
+    if (filesize($file_path) > 1024 * 1024) {
+        $this->load->library('image_lib');
+
+        $resize_config['image_library']  = 'gd2';
+        $resize_config['source_image']   = $file_path;
+        $resize_config['maintain_ratio'] = TRUE;
+        $resize_config['quality']        = '75';
+        $resize_config['width']          = 1280;
+        $resize_config['height']         = 1280;
+        $resize_config['overwrite']      = TRUE;
+
+        $this->image_lib->initialize($resize_config);
+
+        if (!$this->image_lib->resize()) {
+            // Jika resize gagal, file tetap disimpan tapi beri warning
+            log_message('error', 'Resize gagal: ' . $this->image_lib->display_errors());
+        }
+
+        $this->image_lib->clear();
+    }
+
+    return $file_data['file_name'];
+}
+
 }

@@ -1,7 +1,8 @@
+<title><?= $konfig->judul_website ?></title>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>LPK MPK-KOKEN - Pelatihan dan Penyaluran Kerja ke Jepang</title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">

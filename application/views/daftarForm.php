@@ -268,8 +268,8 @@
             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
             <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
                 <option value="">Pilih</option>
-                <option value="Laki-laki">Laki-laki</option>
-                <option value="Perempuan">Perempuan</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
             </select>
         </div>
 
@@ -281,8 +281,9 @@
         <div class="col-md-6">
             <label for="menikah" class="form-label">Status Menikah</label>
             <select name="menikah" id="menikah" class="form-select">
-                <option value="Belum">Belum</option>
-                <option value="Sudah">Sudah</option>
+                <option value="未婚">未婚</option>
+                <option value="既婚">既婚</option>
+                <option value="離婚">離婚</option>
             </select>
         </div>
 
@@ -299,9 +300,8 @@
         <div class="col-md-6">
             <label for="buta_warna" class="form-label">Buta Warna</label>
             <select name="buta_warna" id="buta_warna" class="form-select">
-                <option value="Tidak">Tidak</option>
-                <option value="Parsial">Parsial</option>
-                <option value="Total">Total</option>
+                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
@@ -319,53 +319,59 @@
         <div class="col-md-6">
             <label for="tangan_dominan" class="form-label">Tangan Dominan</label>
             <select name="tangan_dominan" id="tangan_dominan" class="form-select">
-                <option value="Kanan">Kanan</option>
-                <option value="Kiri">Kiri</option>
-                <option value="Keduanya">Keduanya</option>
+                <option value="右">右</option>
+                <option value="左">左</option>
             </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="tangan_dominan" class="form-label">Kekuatan Mata Kanan</label>
+            <input type="number" name="kekuatan_mata_kanan" id="kekuatan_mata_kanan" class="form-control" placeholder="Contoh: 1.0">
+        </div>
+        <div class="col-md-6">
+            <label for="kekuatan_mata_kiri" class="form-label">Kekuatan Mata Kiri</label>
+            <input type="number" name="kekuatan_mata_kiri" id="kekuatan_mata_kiri" class="form-control" placeholder="Contoh: 1.0">
         </div>
 
         <div class="col-md-6">
             <label for="operasi" class="form-label">Pernah Operasi</label>
             <select name="operasi" id="operasi" class="form-select">
-                <option value="Tidak">Tidak</option>
-                <option value="Ya">Ya</option>
+                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
         <div class="col-md-6">
             <label for="alkohol" class="form-label">Konsumsi Alkohol</label>
             <select name="alkohol" id="alkohol" class="form-select">
-                <option value="Tidak">Tidak</option>
-                <option value="Ya">Ya</option>
+                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
         <div class="col-md-6">
             <label for="merokok" class="form-label">Merokok</label>
             <select name="merokok" id="merokok" class="form-select">
-                <option value="Tidak">Tidak</option>
-                <option value="Ya">Ya</option>
+                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
         <div class="col-md-6">
             <label for="tato" class="form-label">Memiliki Tato</label>
             <select name="tato" id="tato" class="form-select">
-                <option value="Tidak">Tidak</option>
-                <option value="Ya">Ya</option>
+                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
         <div class="col-md-6">
             <label for="agama" class="form-label">Agama</label>
             <select name="agama" id="agama" class="form-select">
-                <option value="Islam">Islam</option>
-                <option value="Kristen">Kristen</option>
-                <option value="Katolik">Katolik</option>
-                <option value="Hindu">Hindu</option>
-                <option value="Buddha">Buddha</option>
-                <option value="Lainnya">Lainnya</option>
+                <option value="イスラム">イスラム</option>
+                <option value="クリスト">クリスト</option>
+                <option value="ヒンドゥー教">ヒンドゥー教</option>
+                <option value="仏教">仏教</option>
             </select>
         </div>
 

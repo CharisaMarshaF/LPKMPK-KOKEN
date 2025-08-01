@@ -608,11 +608,6 @@
                 if (result.isConfirmed) {
                     // Clear localStorage for main form fields
                     mainFormFields.forEach(field => localStorage.removeItem(field.name));
-                    // Clear cookies for dynamic tables
-                    document.cookie = "pendidikan=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                    document.cookie = "kerja=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                    document.cookie = "keluarga=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
                     // Append dynamic table data as hidden inputs before submitting
                     appendDynamicDataToForm();
                     form.submit(); // Submit the form

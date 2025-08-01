@@ -69,6 +69,7 @@ class Daftar extends CI_Controller {
         $dataKeluarga   = json_decode($keluarga, true);
         $dataKerja      = json_decode($kerja, true);
 
+
         // Simpan data pendidikan
         if (!empty($dataPendidikan)) {
             foreach ($dataPendidikan as $data) {
@@ -92,7 +93,7 @@ class Daftar extends CI_Controller {
                 $this->db->insert('cv_pengalaman', $data);
             }
         }
-
+        
         // Hapus cookie setelah disimpan
         delete_cookie('pendidikan');
         delete_cookie('keluarga');

@@ -36,10 +36,10 @@
                         <td class="text-left border-b"><?= htmlspecialchars($t['no_telp']) ?></td>
                         <td class="border-b w-5">
                             <div class="flex justify-center items-center">
-                                <a href="<?= base_url('admin/pendaftaran/lihat/'.$t['nik']) ?>" class="flex items-center mr-3 text-blue-500 edit-btn">
+                                <a target="_blank" href="<?= base_url('admin/pendaftaran/lihat/'.$t['nik']) ?>" class="flex items-center mr-3 text-blue-500 edit-btn">
                                     <i data-lucide="edit" class="w-4 h-4 mr-1"></i> Lihat
                                 </a>
-                                <a href="javascript:;" class="flex items-center text-danger delete-btn" data-id="<?= $t['id'] ?>">
+                                <a href="javascript:;" class="flex items-center text-danger delete-btn" data-id="<?= $t['nik'] ?>">
                                     <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
                                 </a>
                             </div>

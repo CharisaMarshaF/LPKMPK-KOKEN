@@ -18,8 +18,15 @@ class Pendaftaran extends CI_Controller {
 		$this->template->load('template_admin','admin/pendaftaran_index',$data);
 	}
     public function delete_data($id){
-        $this->db->where('id', $id);
+        $this->db->where('nik', $id);
         $this->db->delete('cv');
+        // Hapus data pendidikan, pengalaman, dan keluarga terkait
+        $this->db->where('nik', $id);
+        $this->db->delete('cv_pendidikan');
+        $this->db->where('nik', $id);
+        $this->db->delete('cv_pengalaman');
+        $this->db->where('nik', $id);
+        $this->db->delete('cv_keluarga');
         $this->session->set_flashdata('notifikasi', '<div class="alert alert-success">Data berhasil dihapus.</div>');
         redirect('admin/pendaftaran');
     }
@@ -27,14 +34,14 @@ class Pendaftaran extends CI_Controller {
         $cv = $this->db->where('nik', $nik)->from('cv')->get()->row();
         // Ambil furigana (Katakana) dari API
         $nama = ucwords(strtolower(trim($cv->nama)));
-        // $url = 'https://api.romaji2kana.com/v1/to/katakana?q=' . urlencode($nama);
-        // $response = file_get_contents($url);
-        // if ($response !== false) {
-        //     $result = json_decode($response, true);
-        //     $furigana = $result['a']; // Contoh hasil: アピップ マイサ
-        // } else {
-        //     $furigana = $nama; // fallback jika gagal ambil API
-        // }
+        $url = 'https://api.romaji2kana.com/v1/to/katakana?q=' . urlencode($nama);
+        $response = file_get_contents($url);
+        if ($response !== false) {
+            $result = json_decode($response, true);
+            $furigana = $result['a']; // Contoh hasil: アピップ マイサ
+        } else {
+            $furigana = $nama; // fallback jika gagal ambil API
+        }
          // Create new PDF
         $sizeJP = 12;
         $sizeEN = 11;
@@ -54,7 +61,7 @@ class Pendaftaran extends CI_Controller {
         $pdf->SetFillColor(220, 230, 241); // Light blue header background
         // Baris 5
         $pdf->Cell(20, $rowHeight, 'フリガナ', 1, 0, 'C', true);
-        $pdf->Cell(130, $rowHeight, '', 1, 0,'C');
+        $pdf->Cell(130, $rowHeight, $furigana, 1, 0,'C');
         $pdf->SetFont('cid0jp', '', $sizeJP); 
         $pdf->Cell(20, $rowHeight, '番号', 1, 0, 'C', true);
         $pdf->SetFont('times', '', $sizeEN); // Gunakan font CJK untuk Jepang

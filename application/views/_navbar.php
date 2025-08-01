@@ -76,9 +76,9 @@
 			<!-- Logo START -->
 			<a class="navbar-brand" href="index.html">
 				<img class="light-mode-item navbar-brand-item" src="<?= base_url('assets/assets/img/logoasli.png'); ?>"
-					alt="logo" style="height: 60px;">
+					alt="logo" style="height: 80px;">
 				<img class="dark-mode-item navbar-brand-item" src="<?= base_url('assets/assets/img/logoasli.png'); ?>"
-					alt="logo" style="height: 60px;">
+					alt="logo" style="height: 80px;">
 			</a>
 
 			<!-- Logo END -->

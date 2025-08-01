@@ -64,13 +64,13 @@ class Pendaftaran extends CI_Controller {
         $pdf->Cell(130, $rowHeight, $furigana, 1, 0,'C');
         $pdf->SetFont('cid0jp', '', $sizeJP); 
         $pdf->Cell(20, $rowHeight, '番号', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN); // Gunakan font CJK untuk Jepang
+        $pdf->SetFont('cid0jp', '', $sizeEN); // Gunakan font CJK untuk Jepang
         $pdf->Cell(20, $rowHeight, '2', 1, 1, 'C');
 
         // Baris 6
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '氏名', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(130, $rowHeight, $nama, 1, 0, 'C');
         // Menyimpan posisi X dan Y saat ini
         $posX = $pdf->GetX();
@@ -81,22 +81,22 @@ class Pendaftaran extends CI_Controller {
         $pdf->SetXY(10, $posY + $rowHeight); // X default 10 (margin kiri), Y ditambah $rowHeight dari baris sebelumnya
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '住所', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(130, $rowHeight, $cv->alamat, 1,0, 'C');
 
         // Baris 8
         $pdf->SetXY(10, $posY + 16); // X default 10 (margin kiri), Y ditambah 16 dari baris sebelumnya
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '性別', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(30, $rowHeight, $cv->jenis_kelamin, 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(25, $rowHeight, '生年月日', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(35, $rowHeight, date('d-M-Y', strtotime($cv->tanggal_lahir)), 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '年齢', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $birthDate = new DateTime($cv->tanggal_lahir);
         $today = new DateTime();
         $age = $today->diff($birthDate)->y;
@@ -105,58 +105,58 @@ class Pendaftaran extends CI_Controller {
         // Baris 9
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '婚姻', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(30, $rowHeight, $cv->menikah, 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(25, $rowHeight, '身長', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(35, $rowHeight, $cv->tinggi_badan . ' cm', 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '体重', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(20, $rowHeight, $cv->berat_badan . ' kg', 1, 1, 'C');
         
         // Baris 10
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, 16, '視力', 1, 0, 'C', true);
         $pdf->Cell(15, $rowHeight, '右 :', 1, 0, 'R');
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(15, $rowHeight,'1.0', 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(25, $rowHeight, '色覚異常', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(35, $rowHeight, $cv->buta_warna, 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '血液型', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(20, $rowHeight, $cv->golongan_darah, 1, 1, 'C');
 
         $pdf->SetXY(30, $posY + 40); // X default 10 (margin kiri), Y ditambah 16 dari baris sebelumnya
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(15, $rowHeight, '左 :', 1, 0, 'R');
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(15, $rowHeight,'1.0', 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(25, $rowHeight, '利き手', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(35, $rowHeight, $cv->tangan_dominan, 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '手術', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(20, $rowHeight, $cv->operasi, 1, 1, 'C');
         
         // Baris 11
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '飲酒', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(30, $rowHeight, $cv->alkohol, 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(25, $rowHeight, '喫煙', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(30, $rowHeight, $cv->merokok, 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(30, $rowHeight, '肌上入れ墨', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(15, $rowHeight, $cv->tato, 1, 1, 'C');
 
         // Baris 12
@@ -165,7 +165,7 @@ class Pendaftaran extends CI_Controller {
         $pdf->Cell(60, $rowHeight, '出身地', 1, 0, 'C', true);
         $pdf->Cell(40, $rowHeight, '電話番号', 1, 0, 'C', true);
         $pdf->Cell(40, $rowHeight, '市民番号', 1, 1, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(50, $rowHeight, $cv->agama, 1, 0, 'C');
         $pdf->Cell(60, $rowHeight, $cv->tempat_lahir, 1, 0, 'C');
         $pdf->Cell(40, $rowHeight, $cv->no_telp, 1, 0, 'C');
@@ -176,31 +176,31 @@ class Pendaftaran extends CI_Controller {
         // Baris 14
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '志望動機', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(0, $rowHeight, $cv->motivasi, 1, 1, 'L');
 
         // Baris 15
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '自己PR', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(0, $rowHeight, $cv->promosi, 1, 1, 'L');
 
         // Baris 16
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '長所', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(0, $rowHeight, $cv->kelebihan, 1, 1, 'L');
 
         // Baris 17
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '短所', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(0, $rowHeight, $cv->kekurangan, 1, 1, 'L');
 
         // Baris 18
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '趣味', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(0, $rowHeight, $cv->hobi, 1, 1, 'L');
 
         // Baris 20
@@ -213,14 +213,14 @@ class Pendaftaran extends CI_Controller {
         $pdf->Cell(20, $rowHeight, '年数', 1, 0, 'C', true);
         $pdf->Cell(20, $rowHeight, '分類', 1, 1, 'C', true);
         $cv_pendidikan = $this->db->where('nik', $nik)->from('cv_pendidikan')->get()->result();
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         // Loop untuk setiap pendidikan
         foreach ($cv_pendidikan as $pendidikan) {
             $pdf->Cell(20, $rowHeight, $pendidikan->tahun_mulai, 1, 0, 'C');
             $pdf->Cell(10, $rowHeight, '-', 1, 0, 'C');
             $pdf->Cell(20, $rowHeight, $pendidikan->tahun_berakhir, 1, 0, 'C');
             $pdf->Cell(100, $rowHeight, $pendidikan->sekolah, 1, 0, 'L');
-            $pdf->Cell(20, $rowHeight, $pendidikan->tahun_berakhir-$pendidikan->tahun_mulai . ' tahun', 1, 0, 'C');
+            $pdf->Cell(20, $rowHeight, $pendidikan->tahun_berakhir-$pendidikan->tahun_mulai . ' 年', 1, 0, 'C');
             $pdf->Cell(20, $rowHeight, $pendidikan->jenjang, 1, 1, 'C');
         }
         // Baris 22
@@ -236,7 +236,7 @@ class Pendaftaran extends CI_Controller {
         $pdf->Cell(20, $rowHeight, '月収', 1, 1, 'C', true);
         $cv_pengalaman = $this->db->where('nik', $nik)->from('cv_pengalaman')->get()->result();
         // Isi data pengalaman kerja
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         foreach ($cv_pengalaman as $pengalaman) {
             $tahun_awal = (int)date('Y', strtotime($pengalaman->awal));
             $tahun_akhir = (int)date('Y', strtotime($pengalaman->akhir));
@@ -265,7 +265,7 @@ class Pendaftaran extends CI_Controller {
         $pdf->Cell(40, $rowHeight, '職種', 1, 1, 'C', true); //pekerjaan
         $cv_keluarga = $this->db->where('nik', $nik)->from('cv_keluarga')->get()->result();
         // Isi data keluarga
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         foreach ($cv_keluarga as $keluarga) {
             $pdf->Cell(20, $rowHeight, $keluarga->hubungan, 1, 0, 'C');
             $pdf->Cell(50, $rowHeight, $keluarga->nama, 1, 0, 'C');
@@ -282,21 +282,21 @@ class Pendaftaran extends CI_Controller {
         // Baris 46
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(40, $rowHeight, '在日親族', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
-        $pdf->Cell(40, $rowHeight, 'Teman di Jepang?', 1, 0, 'C');
+        $pdf->SetFont('cid0jp', '', $sizeEN);
+        $pdf->Cell(40, $rowHeight, '', 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(70, $rowHeight, '日本へ行くことに家族は', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
-        $pdf->Cell(40, $rowHeight, 'Keluarga Setuju/Tidak', 1, 1, 'C');
+        $pdf->SetFont('cid0jp', '', $sizeEN);
+        $pdf->Cell(40, $rowHeight, '', 1, 1, 'C');
 
         //baris 47
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(40, $rowHeight, '保証人氏名', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(40, $rowHeight, ' ', 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(70, $rowHeight, '保証人連絡先', 1, 0, 'C', true);
-        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(40, $rowHeight, ' ', 1, 1, 'C');
 
         // Output PDF

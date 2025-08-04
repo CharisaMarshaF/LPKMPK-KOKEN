@@ -29,6 +29,17 @@ class Daftar extends CI_Controller {
             $this->session->set_flashdata('gagal', 'NIK sudah terdaftar, silahkan gunakan NIK lain. Atau hubungi admin untuk bantuan bahwa NIK sudah digunakan di sistem.');
             redirect('daftar');
         }
+        $namafoto = $this->input->post('nik') . '.jpg';
+        $config['upload_path']   = './assets/foto/';
+        $config['allowed_types'] = 'jpg|jpeg';
+        $config['file_name']     = $namafoto;
+        $config['max_size']      = 512*1024; // Maksimal ukuran file 2MB
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('foto')) {
+            // Jika upload gagal, tampilkan pesan error
+            $this->session->set_flashdata('gagal', $this->upload->display_errors());
+            redirect('daftar');
+        }
         // Ambil input utama
         $data_cv = [
             'nik'             => $this->input->post('nik'),
@@ -40,6 +51,9 @@ class Daftar extends CI_Controller {
             'tinggi_badan'    => $this->input->post('tinggi_badan'),
             'berat_badan'     => $this->input->post('berat_badan'),
             'buta_warna'      => $this->input->post('buta_warna'),
+            'kanan'           => $this->input->post('kanan'),
+            'kiri'            => $this->input->post('kiri'),
+            'bahasa_jepang'   => $this->input->post('bahasa_jepang'),
             'golongan_darah'  => $this->input->post('golongan_darah'),
             'tangan_dominan'  => $this->input->post('tangan_dominan'),
             'operasi'         => $this->input->post('operasi'),
@@ -53,7 +67,8 @@ class Daftar extends CI_Controller {
             'promosi'         => $this->input->post('promosi'),
             'kelebihan'       => $this->input->post('kelebihan'),
             'kekurangan'      => $this->input->post('kekurangan'),
-            'hobi'            => $this->input->post('hobi')
+            'hobi'            => $this->input->post('hobi'),
+            'foto'            => $namafoto,
         ];
 
         $this->db->insert('cv', $data_cv);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2025 at 06:21 PM
+-- Generation Time: Aug 04, 2025 at 10:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -157,16 +157,20 @@ CREATE TABLE `cv` (
   `promosi` varchar(150) NOT NULL,
   `kelebihan` varchar(150) NOT NULL,
   `kekurangan` varchar(150) NOT NULL,
-  `hobi` varchar(150) NOT NULL
+  `hobi` varchar(150) NOT NULL,
+  `bahasa_jepang` int(11) NOT NULL,
+  `kanan` decimal(2,1) NOT NULL,
+  `kiri` decimal(2,1) NOT NULL,
+  `foto` varchar(30) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cv`
 --
 
-INSERT INTO `cv` (`id`, `nama`, `alamat`, `jenis_kelamin`, `tanggal_lahir`, `menikah`, `tinggi_badan`, `berat_badan`, `buta_warna`, `golongan_darah`, `tangan_dominan`, `operasi`, `alkohol`, `merokok`, `tato`, `agama`, `tempat_lahir`, `no_telp`, `nik`, `motivasi`, `promosi`, `kelebihan`, `kekurangan`, `hobi`) VALUES
-(1, 'Mangkok Tempurung', 'Suruh RT 02 RW 01', 'Laki-laki', '1999-06-09', 'Belum', '174', '62', 'Tidak', 'A', 'Kanan', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Islam', 'SUKOHARJO', '089673333318', '333110908908490123', 'ingin kaya', 'Internet, teman', 'gada', 'gada', 'Badminton, ngoding, gitaran'),
-(3, 'John Kennedy', 'Amerika', 'Laki-laki', '2000-07-10', 'Belum', '170', '60', 'Tidak', 'O', 'Kanan', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Islam', 'Amerika', '089673333318', '3311070806960231', 'gadaaa', 'Internet, teman', 'gadaaagadaaa', 'gadaaagadaaagadaaagadaaa', '');
+INSERT INTO `cv` (`id`, `nama`, `alamat`, `jenis_kelamin`, `tanggal_lahir`, `menikah`, `tinggi_badan`, `berat_badan`, `buta_warna`, `golongan_darah`, `tangan_dominan`, `operasi`, `alkohol`, `merokok`, `tato`, `agama`, `tempat_lahir`, `no_telp`, `nik`, `motivasi`, `promosi`, `kelebihan`, `kekurangan`, `hobi`, `bahasa_jepang`, `kanan`, `kiri`, `foto`, `created_at`) VALUES
+(1, 'Afif Nuruddin Maisaroh', 'Suruh RT 02 RW 01', '男', '1996-08-04', '未婚', '170', '60', '無', 'O', '右', '無', '無', '無', '無', 'イスラム', 'Sukoharjo', '089673333318', '3331109089084901231', 'Banyak uang', 'Internet, teman', 'punya kemampuan banyak', 'Malas', 'Badminton, ngoding, gitaran', 0, 0.3, 0.5, '3331109089084901231.jpg', '2025-08-04 08:51:17');
 
 -- --------------------------------------------------------
 
@@ -181,7 +185,6 @@ CREATE TABLE `cv_keluarga` (
   `nama` varchar(60) NOT NULL,
   `usia` int(11) NOT NULL,
   `serumah` varchar(6) NOT NULL,
-  `tempat` varchar(50) NOT NULL,
   `pekerjaan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -189,9 +192,9 @@ CREATE TABLE `cv_keluarga` (
 -- Dumping data for table `cv_keluarga`
 --
 
-INSERT INTO `cv_keluarga` (`id`, `nik`, `hubungan`, `nama`, `usia`, `serumah`, `tempat`, `pekerjaan`) VALUES
-(1, '333110908908490123', 'Ayah', 'Sutris', 40, 'Ya', 'Sukoharjo', 'Wiraswasta'),
-(2, '333110908908490123', 'Ibu', 'Jarni', 40, 'Ya', 'Sukoharjo', 'Ibu Rumah Tangga');
+INSERT INTO `cv_keluarga` (`id`, `nik`, `hubungan`, `nama`, `usia`, `serumah`, `pekerjaan`) VALUES
+(1, '3331109089084901231', 'Ayah', 'Paijo', 56, '無', 'Wiraswasta'),
+(2, '3331109089084901231', 'Ibu', 'Juiminten', 40, '無', 'Ibu Rumah Tangga');
 
 -- --------------------------------------------------------
 
@@ -213,11 +216,9 @@ CREATE TABLE `cv_pendidikan` (
 --
 
 INSERT INTO `cv_pendidikan` (`id`, `nik`, `jenjang`, `tahun_mulai`, `tahun_berakhir`, `sekolah`) VALUES
-(1, '333110908908490123', 'SD', 2006, 2011, 'SDN 1 Kayuapak'),
-(2, '333110908908490123', 'SMP', 2011, 2014, 'SMPN 1 Mojolaban'),
-(3, '333110908908490123', 'SMA/SMK', 2014, 2017, 'SMKN 2 Karangayar'),
-(4, '333110908908490123', 'Kuliah', 2017, 2020, 'Universitas Sebelas Maret'),
-(9, '3311070806960231', 'SD', 2010, 2016, 'SDN 1 Mojolaban');
+(1, '3331109089084901231', 'SD', 2010, 2016, 'SDN 1 Kayuapak'),
+(2, '3331109089084901231', 'SMP', 2017, 2020, 'SMPN 1 Mojolaban'),
+(3, '3331109089084901231', 'SMA/SMK', 2020, 2021, 'SMKN 2 Karanganyar');
 
 -- --------------------------------------------------------
 
@@ -232,16 +233,10 @@ CREATE TABLE `cv_pengalaman` (
   `akhir` int(11) NOT NULL,
   `tempat` varchar(40) NOT NULL,
   `sebagai` varchar(30) NOT NULL,
-  `alamat` varchar(100) NOT NULL,
-  `gaji` decimal(15,0) NOT NULL
+  `gaji` decimal(15,0) NOT NULL,
+  `bulan_awal` varchar(20) NOT NULL,
+  `bulan_akhir` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cv_pengalaman`
---
-
-INSERT INTO `cv_pengalaman` (`id`, `nik`, `awal`, `akhir`, `tempat`, `sebagai`, `alamat`, `gaji`) VALUES
-(1, '3311070806960231', 2020, 2025, 'PT Maju Jaya', 'Serabutan', 'Mojolaban', 1000000);
 
 -- --------------------------------------------------------
 
@@ -434,7 +429,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama`, `password`, `level`, `recent_login`) VALUES
-(7, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2025-07-22 19:54:07');
+(7, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '2025-08-04 15:54:35');
 
 --
 -- Indexes for dumped tables
@@ -576,7 +571,7 @@ ALTER TABLE `caraousel`
 -- AUTO_INCREMENT for table `cv`
 --
 ALTER TABLE `cv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cv_keluarga`
@@ -588,13 +583,13 @@ ALTER TABLE `cv_keluarga`
 -- AUTO_INCREMENT for table `cv_pendidikan`
 --
 ALTER TABLE `cv_pendidikan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cv_pengalaman`
 --
 ALTER TABLE `cv_pengalaman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `documentation`

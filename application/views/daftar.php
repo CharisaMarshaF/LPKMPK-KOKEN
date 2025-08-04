@@ -44,7 +44,253 @@ Gallery START-->
 			}
 
 		</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<style>
+    /* General Form Styling */
+    .card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        background-color: #fff;
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .form-control,
+    .form-select,
+    .form-control-custom,
+    .form-select-custom {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .form-control:focus,
+    .form-select:focus,
+    .form-control-custom:focus,
+    .form-select-custom:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    .row.g-3 {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 1rem;
+    }
+
+    /* Custom Form Section Styling */
+    .form-section {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #eee;
+    }
+
+    .form-label-section {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #0056b3;
+        display: block;
+    }
+
+    .form-label-sub {
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+        color: #555;
+        font-size: 0.9rem;
+    }
+
+    /* Flexbox for input rows - modified for full width with padding */
+    .row-form-inputs {
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping */
+        gap: 1rem; /* Adjust gap between inputs */
+        align-items: flex-end; /* Aligns items to the bottom */
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        overflow-x: auto; /* For responsiveness on smaller screens if needed */
+        width: 100%; /* Ensure the container takes full width */
+    }
+
+    /* Input column sizing for full width distribution */
+    .col-input {
+        flex-grow: 1; /* Allow inputs to grow and fill available space */
+        flex-shrink: 0; /* Prevent inputs from shrinking too much */
+        flex-basis: 0; /* Important for even distribution with flex-grow */
+        min-width: 80px; /* Minimum width for very small screens */
+    }
+
+    /* Specific adjustments for input widths, if needed, but flex-grow should handle most */
+    .col-input-education-jenjang { flex-basis: 15%; min-width: 100px; }
+    .col-input-education-year { flex-basis: 12%; min-width: 80px; }
+    .col-input-education-school { flex-basis: 35%; min-width: 150px; }
+
+    .col-input-work-year { flex-basis: 10%; min-width: 70px; }
+    .col-input-work-field { flex-basis: 18%; min-width: 120px; }
+    .col-input-work-address { flex-basis: 20%; min-width: 120px; }
+    .col-input-work-salary { flex-basis: 12%; min-width: 90px; }
+
+    .col-input-family-relation { flex-basis: 15%; min-width: 100px; }
+    .col-input-family-name { flex-basis: 20%; min-width: 120px; }
+    .col-input-family-age { flex-basis: 8%; min-width: 50px; }
+    .col-input-family-serumah { flex-basis: 10%; min-width: 70px; }
+    .col-input-family-address { flex-basis: 20%; min-width: 120px; }
+    .col-input-family-job { flex-basis: 17%; min-width: 100px; }
+
+    /* Button Row Styling */
+    .button-row-bottom {
+        display: flex;
+        justify-content: flex-end; /* Aligns content to the right */
+        margin-top: 1rem; /* Space above the button */
+        width: 100%; /* Ensure the button row takes full width */
+    }
+
+    /* Button Styling */
+    .btn-custom {
+        display: inline-block;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 0.375rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .btn-primary-custom {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary-custom:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+
+    .btn-success-custom {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-success-custom:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+    .btn-danger-custom {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    .btn-danger-custom:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    /* Table Styling */
+    .table-custom {
+        width: 100%;
+        margin-top: 1.5rem;
+        border-collapse: collapse;
+    }
+
+    .table-custom thead tr {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border: none;
+    }
+
+    .table-custom th {
+        font-weight: 700;
+        color: #495057;
+        font-size: 0.9rem;
+    }
+
+    .table-custom tbody tr {
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .table-custom tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .table-custom tbody tr:nth-child(even) {
+        background-color: #fdfdfd;
+    }
+
+    .table-custom tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    /* Responsive adjustments for columns */
+    @media (max-width: 768px) {
+        .row-form-inputs {
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            gap: 1rem;
+        }
+        .col-input,
+        .col-input-education-jenjang,
+        .col-input-education-year,
+        .col-input-education-school,
+        .col-input-work-year,
+        .col-input-work-field,
+        .col-input-work-address,
+        .col-input-work-salary,
+        .col-input-family-relation,
+        .col-input-family-name,
+        .col-input-family-age,
+        .col-input-family-serumah,
+        .col-input-family-address,
+        .col-input-family-job {
+            flex-basis: 100%; /* Full width on small screens */
+            min-width: unset;
+            margin-left: 0;
+        }
+        .button-row-bottom {
+            justify-content: center; /* Center button on small screens */
+            width: 100%;
+        }
+        .btn-custom.w-full-responsive {
+            width: 100% !important;
+        }
+    }
+</style>
 		<!-- =======================
 Gallery START-->
 		<section class="pt-0 pt-md-5">

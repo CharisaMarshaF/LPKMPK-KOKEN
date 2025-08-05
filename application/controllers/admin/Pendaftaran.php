@@ -8,6 +8,7 @@ use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\Font;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 class Pendaftaran extends CI_Controller {
     public function __construct(){
         parent::__construct();
@@ -613,11 +614,44 @@ class Pendaftaran extends CI_Controller {
         }
         // Border untuk area foto
         $sheet->getStyle('S5:Z11')->applyFromArray($styleBorder);
-        // Export ke browser
-        $writer = new Xlsx($spreadsheet);
+        try {
+            // Kosongkan buffer jika ada
+            if (ob_get_length()) ob_end_clean();
+
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment;filename="cv_'.$nik.'.xlsx"');
+            header('Cache-Control: max-age=0');
+
+            $writer = new Xlsx($spreadsheet);
+            $writer->save('php://output');
+            exit;
+
+        } catch (SpreadsheetException $e) {
+            echo 'Terjadi kesalahan saat membuat file Excel: ' . $e->getMessage();
+        } catch (Throwable $e) {
+            // Untuk menangani error lain seperti fatal error
+            echo 'Terjadi kesalahan umum: ' . $e->getMessage();
+        }
+    }
+    public function test(){
+        // Bersihkan buffer output
+        if (ob_get_length() > 0) {
+            ob_end_clean();
+        }
+
+        // Buat file Excel
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Hello World!');
+
+        // Atur header
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="cv_output.xlsx"');
+        header('Content-Disposition: attachment;filename="hello.xlsx"');
         header('Cache-Control: max-age=0');
+        header('Pragma: public');
+
+        // Simpan file ke output
+        $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
         exit;
     }

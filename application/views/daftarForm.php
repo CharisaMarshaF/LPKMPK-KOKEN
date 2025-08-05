@@ -227,18 +227,18 @@
                 <div class="col-input col-input-work-year">
                     <label class="form-label-sub">Bulan</label>
                     <select name="bulan_awal" id="bulan_awal" class="form-control">
-                        <option value="1月">1月（いちがつ）</option>
-                        <option value="2月">2月（にがつ）</option>
-                        <option value="3月">3月（さんがつ）</option>
-                        <option value="4月">4月（しがつ）</option>
-                        <option value="5月">5月（ごがつ）</option>
-                        <option value="6月">6月（ろくがつ）</option>
-                        <option value="7月">7月（しちがつ）</option>
-                        <option value="8月">8月（はちがつ）</option>
-                        <option value="9月">9月（くがつ）</option>
-                        <option value="10月">10月（じゅうがつ）</option>
-                        <option value="11月">11月（じゅういちがつ）</option>
-                        <option value="12月">12月（じゅうにがつ）</option>
+                        <option value="1">1月（いちがつ）</option>
+                        <option value="2">2月（にがつ）</option>
+                        <option value="3">3月（さんがつ）</option>
+                        <option value="4">4月（しがつ）</option>
+                        <option value="5">5月（ごがつ）</option>
+                        <option value="6">6月（ろくがつ）</option>
+                        <option value="7">7月（しちがつ）</option>
+                        <option value="8">8月（はちがつ）</option>
+                        <option value="9">9月（くがつ）</option>
+                        <option value="10">10月（じゅうがつ）</option>
+                        <option value="11">11月（じゅういちがつ）</option>
+                        <option value="12">12月（じゅうにがつ）</option>
                     </select>
                 </div>
                 <div class="col-input col-input-work-year">

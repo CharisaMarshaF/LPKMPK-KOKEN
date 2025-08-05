@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>履歴書 - Alfian Octavio Ramadhan</title>
+  <title>CV <?= $nik?></title>
   <style>
     body {
       background: #ccc;
@@ -12,14 +12,15 @@
       font-size: 12px;
     }
 
-    .a4 {
-      width: 210mm;
-      min-height: 297mm;
-      margin: auto;
-      background: white;
-      padding: 20mm;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    }
+  .a4 {
+    width: 210mm;
+    /* min-height: 297mm; --> Hapus ini */
+    margin: auto;
+    background: white;
+    padding: 10mm; /* kecilkan padding */
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  }
+
 
     table {
       border-collapse: collapse;
@@ -53,25 +54,40 @@
     .no-border {
       border: none;
     }
-    .bl {
-      background-color: #dce6f1;
-      color: #000;
-      font-weight: bold;
-    }
+.bl {
+  background-color: #dce6f1;
+  color: #000;
+  font-weight: bold;
+  -webkit-print-color-adjust: exact; /* Chrome & Safari */
+  print-color-adjust: exact;         /* Standar CSS */
+}
 
-    @media print {
-      body {
-        background: none;
-        padding: 0;
-      }
+@media print {
+  body {
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
 
-      .a4 {
-        box-shadow: none;
-        margin: 0;
-        padding: 15mm;
-        page-break-after: always;
-      }
-    }
+  .a4 {
+    box-shadow: none;
+    margin: 0;
+    padding: 10mm;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  table, tr, td, th {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  html, body {
+    height: auto !important;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -89,7 +105,7 @@
         }
 ?>
 <div class="a4">
-<h2 style="text-align: center;">応募者履歴書</h2>
+<h1 style="text-align: center;">応募者履歴書</h1>
 <h4>実習実施者：	</h4>
 <h4>作成日：</h4>
 <!-- Header -->
@@ -207,7 +223,7 @@
 </tr>
 </table>
 <!-- Education -->
-<table>
+<table style="margin-bottom: 0; padding-bottom: 0;">
 <tr>
     <td rowspan="7" class="bl">学歴</td>
     <td class="bl">年</td>
@@ -218,7 +234,7 @@
     <td class="bl">学校名</td>
     <td class="bl">年数</td>
     <td class="bl">分類</td>
-    <td class="bl">日本語学習期間</td>
+    <td class="bl" colspan="2">日本語学習期間</td>
 </tr>
 <?php $baris=0; foreach ($pendidikan as $p){ ?>
 <tr>
@@ -231,12 +247,12 @@
     <td><?= $p['tahun_berakhir'] - $p['tahun_mulai'] ?> 年</td>
     <td><?= $p['jenjang'] ?></td>
     <?php if($baris ==0): ?>
-    <td rowspan="6 "><?= $cv->bahasa_jepang  ?> ヶ月</td>
+    <td rowspan="6" colspan="2"><?= $cv->bahasa_jepang  ?> ヶ月</td>
     <?php endif ?>
 </tr>
 <?php $baris++; } ?>
 <?php $kurang = 6 - $baris; ?>
-<?php for ($i = $kurang; $i < 6; $i++){ ?>
+<?php for ($i = 0; $i < $kurang; $i++) { ?>
 <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -248,6 +264,101 @@
     <td>&nbsp;</td>
 </tr>
 <?php } ?>
+<tr>
+    <td rowspan="7" class="bl">職歴</td>
+    <td class="bl">年</td>
+    <td class="bl">月</td>
+    <td class="bl"></td>
+    <td class="bl">年</td>
+    <td class="bl">月</td>
+    <td class="bl">会社名</td>
+    <td class="bl">年数</td>
+    <td class="bl">職種</td>
+    <td class="bl">勤務地</td>
+    <td class="bl">月収</td>
+</tr>
+<?php $baris=0; foreach ($pengalaman as $p){ ?>
+<tr>
+    <td><?= $p['awal'] ?></td>
+    <td><?= $p['bulan_awal'] ?></td>
+    <td>~</td>
+    <td><?= $p['akhir'] ?></td>
+    <td><?= $p['bulan_akhir'] ?></td>
+    <td><?= $p['tempat'] ?></td>
+    <td><?= $p['akhir'] - $p['awal'] ?> 年</td>
+    <td><?= $p['sebagai'] ?></td>
+    <td>インドネシア</td>
+    <td><?= number_format($p['gaji'], 0, ',', '.') ?> 円</td>
+</tr>
+<?php $baris++; } ?>
+<?php $kurang = 6 - $baris; ?>
+<?php for ($i = 0; $i < $kurang; $i++) { ?>
+<tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+<?php } ?>
+<tr>
+  <td colspan="11"> &nbsp;</td>
+</tr>
+</table>
+<table>
+<tr>
+    <td rowspan="9" class="bl">家族</td> <!-- Family -->
+    <td class="bl">続柄</td> <!-- Relationship -->
+    <td class="bl">氏名</td> <!-- Name -->
+    <td class="bl">年齢</td> <!-- Age -->
+    <td class="bl">別同居</td> <!-- Living Together -->
+    <td class="bl">居住地</td> <!-- Residence -->
+    <td class="bl">職種</td> <!-- Occupation -->
+    <td class="bl">世帯月収</td> <!-- Household Monthly Income -->
+</tr>
+<?php 
+$gaji = $this->db->select_sum('gaji')->where('nik', $nik)->get('cv_keluarga')->row()->gaji;
+$baris=0; foreach ($keluarga as $k){ ?>
+<tr>
+    <td><?= $k['hubungan'] ?></td>
+    <td><?= $k['nama'] ?></td>
+    <td><?= $k['usia'] ?> 歳</td>
+    <td><?= $k['serumah'] ?></td>
+    <td>インドネシア</td>
+    <td><?= $k['pekerjaan'] ?></td>
+    <?php if($baris ==0): ?>
+    <td rowspan="8"><?= $gaji ?> 万円</td>
+    <?php endif ?>
+</tr>
+<?php $baris++; } ?>
+<?php $kurang = 8 - $baris; ?>
+<?php for ($i = 0; $i < $kurang; $i++) { ?>
+<tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+<?php } ?>
+<tr>
+  <td class="bl" colspan="2">在日親族</td>
+  <td colspan="2">&nbsp;</td>
+  <td class="bl" colspan="1">&日本へ行くことに家族は</td>
+  <td colspan="3">&nbsp;</td>
+</tr>
+<tr>
+  <td class="bl" colspan="3">保証人氏名</td>
+  <td colspan="1">&nbsp;</td>
+  <td class="bl" colspan="2">&保証人連絡先</td>
+  <td colspan="2">&nbsp;</td>
+</tr>
 </table>
 </div>
 </body>

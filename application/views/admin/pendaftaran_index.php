@@ -1,16 +1,9 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-
-<!-- BEGIN: Modal Tambah -->
-<div class="text-left mt-8">
-    <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#tambah-modal" class="btn btn-primary">Tambah Testimoni</a>
-</div>
-
 <div id="myalert" class="mt-3">
     <?= $this->session->flashdata('notifikasi') ?>
 </div>
 
 <!-- BEGIN: Datatable -->
-<div class="intro-y box mt-3">
+<div class="intro-y box mt-10">
     <div class="p-5">
         <div class="overflow-x-auto">
             <table id="example1" class="table table-report table-report--bordered w-full">
@@ -38,6 +31,9 @@
                             <div class="flex justify-center items-center">
                                 <a target="_blank" href="<?= base_url('admin/pendaftaran/lihat/'.$t['nik']) ?>" class="flex items-center mr-3 text-blue-500 edit-btn">
                                     <i data-lucide="edit" class="w-4 h-4 mr-1"></i> Lihat
+                                </a>
+                                <a href="<?= base_url('admin/pendaftaran/export_excel/'.$t['nik']) ?>" target="_blank" class="flex items-center text-success mr-3 export-btn">
+                                    <i data-lucide="file-text" class="w-4 h-4 mr-1"></i> Excel
                                 </a>
                                 <a href="javascript:;" class="flex items-center text-danger delete-btn" data-id="<?= $t['nik'] ?>">
                                     <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete

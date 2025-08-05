@@ -18,6 +18,10 @@ class Pendaftaran extends CI_Controller {
 		$this->template->load('template_admin','admin/pendaftaran_index',$data);
 	}
     public function delete_data($id){
+        $foto = $this->db->where('nik', $id)->get('cv')->row()->foto;
+        if ($foto && file_exists(FCPATH . 'assets/foto/' . $foto)) {
+            unlink(FCPATH . 'assets/foto/' . $foto); // Hapus foto jika ada
+        }
         $this->db->where('nik', $id);
         $this->db->delete('cv');
         // Hapus data pendidikan, pengalaman, dan keluarga terkait
@@ -46,7 +50,7 @@ class Pendaftaran extends CI_Controller {
         $sizeJP = 12;
         $sizeEN = 11;
         $rowHeight = 8;
-        $pdf = new TCPDF('P', 'mm', 'A4');
+        $pdf = new TCPDF('P', 'mm', [216, 365], true, 'UTF-8', false);
         $pdf->SetPrintHeader(false);
         $pdf->SetPrintFooter(false);
         $pdf->AddPage();
@@ -70,19 +74,47 @@ class Pendaftaran extends CI_Controller {
         // Baris 6
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '氏名', 1, 0, 'C', true);
-        $pdf->SetFont('cid0jp', '', $sizeEN);
+        $pdf->SetFont('times', '', $sizeEN);
         $pdf->Cell(130, $rowHeight, $nama, 1, 0, 'C');
         // Menyimpan posisi X dan Y saat ini
         $posX = $pdf->GetX();
         $posY = $pdf->GetY();
-        $pdf->Cell(40, 56, 'FOTO', 1, 1, 'C');
+        // Gambar foto
+        $fotoPath = FCPATH . 'assets/foto/' . $cv->foto;
+        if (file_exists($fotoPath) && !empty($cv->foto)) {
+            // Ambil posisi X dan Y dari kotak FOTO
+            $fotoX = $posX;
+            $fotoY = $posY;
+            $fotoWidth = 40;
+            $fotoHeight = 56;
+
+            // Tambahkan frame
+            $pdf->Rect($fotoX, $fotoY, $fotoWidth, $fotoHeight);
+
+            // Tambahkan gambar
+            $pdf->Image($fotoPath, $fotoX + 1, $fotoY + 1, $fotoWidth - 2, $fotoHeight - 2, '', '', '', false, 300, '', false, false, 0);
+        } else {
+            // Jika tidak ada foto, tampilkan teks "FOTO"
+            $pdf->Cell(40, 56, 'FOTO', 1, 1, 'C');
+        }
+        
 
         // Baris 7
         $pdf->SetXY(10, $posY + $rowHeight); // X default 10 (margin kiri), Y ditambah $rowHeight dari baris sebelumnya
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '住所', 1, 0, 'C', true);
-        $pdf->SetFont('cid0jp', '', $sizeEN);
-        $pdf->Cell(130, $rowHeight, $cv->alamat, 1,0, 'C');
+        if (strlen($cv->alamat) > 52) {
+            $pdf->SetFont('times', '', 9); // kecil jika lebih panjang
+        } else {
+            $pdf->SetFont('times', '', 12); // besar jika pendek
+        }
+        $x = $pdf->GetX(); // simpan posisi X sekarang
+        $y = $pdf->GetY(); // simpan posisi Y sekarang
+
+        $pdf->MultiCell(130, $rowHeight, $cv->alamat, 1, 'C');
+
+        // jika ada kolom di kanan setelahnya, kembalikan posisi Y dan pindahkan X:
+        $pdf->SetXY($x + 130, $y);
 
         // Baris 8
         $pdf->SetXY(10, $posY + 16); // X default 10 (margin kiri), Y ditambah 16 dari baris sebelumnya
@@ -100,7 +132,7 @@ class Pendaftaran extends CI_Controller {
         $birthDate = new DateTime($cv->tanggal_lahir);
         $today = new DateTime();
         $age = $today->diff($birthDate)->y;
-        $pdf->Cell(20, $rowHeight, $age, 1, 1, 'C');
+        $pdf->Cell(20, $rowHeight, $age. '歳', 1, 1, 'C');
 
         // Baris 9
         $pdf->SetFont('cid0jp', '', $sizeJP);
@@ -121,7 +153,7 @@ class Pendaftaran extends CI_Controller {
         $pdf->Cell(20, 16, '視力', 1, 0, 'C', true);
         $pdf->Cell(15, $rowHeight, '右 :', 1, 0, 'R');
         $pdf->SetFont('cid0jp', '', $sizeEN);
-        $pdf->Cell(15, $rowHeight,'1.0', 1, 0, 'C');
+        $pdf->Cell(15, $rowHeight,$cv->kanan, 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(25, $rowHeight, '色覚異常', 1, 0, 'C', true);
         $pdf->SetFont('cid0jp', '', $sizeEN);
@@ -135,7 +167,7 @@ class Pendaftaran extends CI_Controller {
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(15, $rowHeight, '左 :', 1, 0, 'R');
         $pdf->SetFont('cid0jp', '', $sizeEN);
-        $pdf->Cell(15, $rowHeight,'1.0', 1, 0, 'C');
+        $pdf->Cell(15, $rowHeight,$cv->kiri, 1, 0, 'C');
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(25, $rowHeight, '利き手', 1, 0, 'C', true);
         $pdf->SetFont('cid0jp', '', $sizeEN);
@@ -167,7 +199,9 @@ class Pendaftaran extends CI_Controller {
         $pdf->Cell(40, $rowHeight, '市民番号', 1, 1, 'C', true);
         $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(50, $rowHeight, $cv->agama, 1, 0, 'C');
+
         $pdf->Cell(60, $rowHeight, $cv->tempat_lahir, 1, 0, 'C');
+        $pdf->SetFont('times', '', $sizeEN);
         $pdf->Cell(40, $rowHeight, $cv->no_telp, 1, 0, 'C');
         $pdf->Cell(40, $rowHeight, $cv->nik, 1, 1, 'C');
         // Atur tinggi baris
@@ -176,108 +210,163 @@ class Pendaftaran extends CI_Controller {
         // Baris 14
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '志望動機', 1, 0, 'C', true);
-        $pdf->SetFont('cid0jp', '', $sizeEN);
-        $pdf->Cell(0, $rowHeight, $cv->motivasi, 1, 1, 'L');
+        $pdf->SetFont('cid0jp', '', 8);
+        $pdf->Cell(170, $rowHeight, $cv->motivasi, 1, 1, 'L');
 
         // Baris 15
         $pdf->SetFont('cid0jp', '', $sizeJP);
-        $pdf->Cell(20, $rowHeight, '自己PR', 1, 0, 'C', true);
+        $pdf->Cell(20, $rowHeight, '自己', 1, 0, 'C', true);
         $pdf->SetFont('cid0jp', '', $sizeEN);
-        $pdf->Cell(0, $rowHeight, $cv->promosi, 1, 1, 'L');
+        $pdf->Cell(170, $rowHeight, $cv->promosi, 1, 1, 'L');
 
         // Baris 16
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '長所', 1, 0, 'C', true);
-        $pdf->SetFont('cid0jp', '', $sizeEN);
-        $pdf->Cell(0, $rowHeight, $cv->kelebihan, 1, 1, 'L');
+        $pdf->SetFont('cid0jp', '', 8);
+        $pdf->Cell(170, $rowHeight, $cv->kelebihan, 1, 1, 'L');
 
         // Baris 17
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '短所', 1, 0, 'C', true);
-        $pdf->SetFont('cid0jp', '', $sizeEN);
-        $pdf->Cell(0, $rowHeight, $cv->kekurangan, 1, 1, 'L');
+        $pdf->SetFont('cid0jp', '', 8);
+        $pdf->Cell(170, $rowHeight, $cv->kekurangan, 1, 1, 'L');
 
         // Baris 18
         $pdf->SetFont('cid0jp', '', $sizeJP);
         $pdf->Cell(20, $rowHeight, '趣味', 1, 0, 'C', true);
         $pdf->SetFont('cid0jp', '', $sizeEN);
-        $pdf->Cell(0, $rowHeight, $cv->hobi, 1, 1, 'L');
+        $pdf->Cell(170, $rowHeight, $cv->hobi, 1, 1, 'L');
 
         // Baris 20
         $pdf->SetFont('cid0jp', '', $sizeJP);
-        $pdf->Cell(0, $rowHeight, '学歴', 1, 1, 'C', true);
-        $pdf->Cell(20, $rowHeight, '年', 1, 0, 'C', true);
-        $pdf->Cell(10, $rowHeight, ' ', 1, 0, 'C', true);
-        $pdf->Cell(20, $rowHeight, '年', 1, 0, 'C', true);
-        $pdf->Cell(100, $rowHeight, '学校名', 1, 0, 'C', true);
-        $pdf->Cell(20, $rowHeight, '年数', 1, 0, 'C', true);
-        $pdf->Cell(20, $rowHeight, '分類', 1, 1, 'C', true);
+        $pdf->Cell(190, $rowHeight, '学歴', 1, 1, 'C', true);
+        $pdf->Cell(15, $rowHeight, '年', 1, 0, 'C', true);
+        $pdf->Cell(8, $rowHeight, '月', 1, 0, 'C', true);
+        $pdf->Cell(8, $rowHeight, ' ', 1, 0, 'C', true);
+        $pdf->Cell(15, $rowHeight, '年', 1, 0, 'C', true);
+        $pdf->Cell(8, $rowHeight, '月', 1, 0, 'C', true);
+        $pdf->Cell(56, $rowHeight, '学校名', 1, 0, 'C', true);
+        $pdf->Cell(20, $rowHeight, '年数 ', 1, 0, 'C', true);
+        $pdf->Cell(20, $rowHeight, '分類', 1, 0, 'C', true);
+        $pdf->Cell(40, $rowHeight, '日本語学習期間', 1, 1, 'C', true);
         $cv_pendidikan = $this->db->where('nik', $nik)->from('cv_pendidikan')->get()->result();
-        $pdf->SetFont('cid0jp', '', $sizeEN);
+        
+        $pdf->SetXY(160, 162); // X default 10 (margin kiri), Y ditambah 16 dari baris sebelumnya
+        $pdf->Cell(40, $rowHeight*6, $cv->bahasa_jepang.' ヶ月', 1, 1, 'C');
+        $pdf->SetFont('times', '', $sizeEN);
+        $pdf->SetXY(10, 162); // X default 10 (margin kiri), Y ditambah 16 dari baris sebelumnya
         // Loop untuk setiap pendidikan
+        $baris = 0;
         foreach ($cv_pendidikan as $pendidikan) {
-            $pdf->Cell(20, $rowHeight, $pendidikan->tahun_mulai, 1, 0, 'C');
-            $pdf->Cell(10, $rowHeight, '-', 1, 0, 'C');
-            $pdf->Cell(20, $rowHeight, $pendidikan->tahun_berakhir, 1, 0, 'C');
-            $pdf->Cell(100, $rowHeight, $pendidikan->sekolah, 1, 0, 'L');
+            $pdf->Cell(15, $rowHeight, $pendidikan->tahun_mulai, 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, '6', 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, '~', 1, 0, 'C');
+            $pdf->Cell(15, $rowHeight, $pendidikan->tahun_berakhir, 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, '6', 1, 0, 'C');
+            $pdf->SetFont('times', '', 8);
+            $pdf->Cell(56, $rowHeight, $pendidikan->sekolah, 1, 0, 'C');
+            $pdf->SetFont('cid0jp', '', $sizeEN);
             $pdf->Cell(20, $rowHeight, $pendidikan->tahun_berakhir-$pendidikan->tahun_mulai . ' 年', 1, 0, 'C');
             $pdf->Cell(20, $rowHeight, $pendidikan->jenjang, 1, 1, 'C');
+            $baris++;
+        }
+        $kurang = 6-$baris; // Hitung sisa baris yang perlu diisi
+        for ($i = 0; $i < $kurang; $i++) {
+            $pdf->Cell(15, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(15, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(56, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(20, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(20, $rowHeight, '', 1, 1, 'C');
         }
         // Baris 22
         $pdf->SetFont('cid0jp', '', $sizeJP);
-        $pdf->Cell(0, $rowHeight, '職歴', 1, 1, 'C', true);
-        $pdf->Cell(20, $rowHeight, '年', 1, 0, 'C', true);
-        $pdf->Cell(10, $rowHeight, ' ', 1, 0, 'C', true);
-        $pdf->Cell(20, $rowHeight, '年', 1, 0, 'C', true);
-        $pdf->Cell(40, $rowHeight, '会社名', 1, 0, 'C', true);
-        $pdf->Cell(20, $rowHeight, '年数', 1, 0, 'C', true);
-        $pdf->Cell(30, $rowHeight, '職種', 1, 0, 'C', true);
+        $pdf->Cell(190, $rowHeight, '職歴', 1, 1, 'C', true);
+        $pdf->Cell(15, $rowHeight, '年', 1, 0, 'C', true);
+        $pdf->Cell(8, $rowHeight, '月', 1, 0, 'C', true);
+        $pdf->Cell(8, $rowHeight, ' ', 1, 0, 'C', true);
+        $pdf->Cell(15, $rowHeight, '年', 1, 0, 'C', true);
+        $pdf->Cell(8, $rowHeight, '月', 1, 0, 'C', true);
+        $pdf->Cell(50, $rowHeight, '会社名', 1, 0, 'C', true);
+        $pdf->Cell(15, $rowHeight, '年数', 1, 0, 'C', true);
+        $pdf->Cell(26, $rowHeight, '職種', 1, 0, 'C', true);
         $pdf->Cell(30, $rowHeight, '勤務地', 1, 0, 'C', true);
-        $pdf->Cell(20, $rowHeight, '月収', 1, 1, 'C', true);
+        $pdf->Cell(15, $rowHeight, '月収', 1, 1, 'C', true);
         $cv_pengalaman = $this->db->where('nik', $nik)->from('cv_pengalaman')->get()->result();
         // Isi data pengalaman kerja
+        $baris=0;
         $pdf->SetFont('cid0jp', '', $sizeEN);
         foreach ($cv_pengalaman as $pengalaman) {
-            $tahun_awal = (int)date('Y', strtotime($pengalaman->awal));
-            $tahun_akhir = (int)date('Y', strtotime($pengalaman->akhir));
+            $tahun_awal = $pengalaman->awal;
+            $tahun_akhir = $pengalaman->akhir;
             $durasi = $tahun_akhir - $tahun_awal;
 
-            $pdf->Cell(20, $rowHeight, $tahun_awal, 1, 0, 'C');
-            $pdf->Cell(10, $rowHeight, '-', 1, 0, 'C');
-            $pdf->Cell(20, $rowHeight, $tahun_akhir, 1, 0, 'C');
-            $pdf->Cell(40, $rowHeight, $pengalaman->tempat, 1, 0, 'L');
-            $pdf->Cell(20, $rowHeight, $durasi . ' tahun', 1, 0, 'C');
-            $pdf->Cell(30, $rowHeight, $pengalaman->sebagai, 1, 0, 'C');
-            $pdf->Cell(30, $rowHeight, $pengalaman->alamat, 1, 0, 'C');
-            $pdf->Cell(20, $rowHeight, number_format($pengalaman->gaji), 1, 1, 'C');
+            $pdf->Cell(15, $rowHeight, $tahun_awal, 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, $pengalaman->bulan_awal, 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, '~', 1, 0, 'C');
+            $pdf->Cell(15, $rowHeight, $tahun_akhir, 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, $pengalaman->bulan_akhir, 1, 0, 'C');
+            $pdf->SetFont('times', '', 9);
+            $pdf->Cell(50, $rowHeight, $pengalaman->tempat, 1, 0, 'L');
+            $pdf->SetFont('cid0jp', '', $sizeEN);
+            $pdf->Cell(15, $rowHeight, $durasi . ' ヶ月', 1, 0, 'C');
+            $pdf->Cell(26, $rowHeight, $pengalaman->sebagai, 1, 0, 'C');
+            $pdf->Cell(30, $rowHeight, 'インドネシア', 1, 0, 'C');
+            $pdf->Cell(15, $rowHeight, $pengalaman->gaji.' 万円', 1, 1, 'C');
+            $baris++;
         }
-        if (empty($cv_pengalaman)) {
-            $pdf->Cell(0, $rowHeight, 'Tidak ada pengalaman kerja', 1, 1, 'C');
+        $kurang = 6-$baris; // Hitung sisa baris yang perlu diisi
+        for ($i = 0; $i < $kurang; $i++) {
+            $pdf->Cell(15, $rowHeight,'', 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight,'', 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(15, $rowHeight,'', 1, 0, 'C');
+            $pdf->Cell(8, $rowHeight,'', 1, 0, 'C');
+            $pdf->SetFont('times', '', $sizeEN);
+            $pdf->Cell(50, $rowHeight, '', 1, 0, 'L');
+            $pdf->SetFont('cid0jp', '', $sizeEN);
+            $pdf->Cell(15, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(26, $rowHeight,'', 1, 0, 'C');
+            $pdf->Cell(30, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(15, $rowHeight, '', 1, 1, 'C');
         }
         // Baris 37
         $pdf->SetFont('cid0jp', '', $sizeJP);
-        $pdf->Cell(0, $rowHeight, '家族', 1, 1, 'C', true);
-        $pdf->Cell(20, $rowHeight, '続柄', 1, 0, 'C', true); //hubungan
-        $pdf->Cell(50, $rowHeight, '氏名', 1, 0, 'C', true); //nama
+        $pdf->Cell(190, $rowHeight, '家族', 1, 1, 'C', true);
+        $pdf->Cell(15, $rowHeight, '続柄', 1, 0, 'C', true); //hubungan
+        $pdf->Cell(40, $rowHeight, '氏名', 1, 0, 'C', true); //nama
         $pdf->Cell(20, $rowHeight, '年齢', 1, 0, 'C', true); //usia
         $pdf->Cell(20, $rowHeight, '別同居', 1, 0, 'C', true); //serumah
-        $pdf->Cell(40, $rowHeight, '居住地', 1, 0, 'C', true); //warga negara
-        $pdf->Cell(40, $rowHeight, '職種', 1, 1, 'C', true); //pekerjaan
+        $pdf->Cell(30, $rowHeight, '居住地', 1, 0, 'C', true); //warga negara
+        $pdf->Cell(30, $rowHeight, '職種', 1, 0, 'C', true); //pekerjaan
+        $pdf->Cell(35, $rowHeight, '世帯月収', 1, 1, 'C', true); //pekerjaan
         $cv_keluarga = $this->db->where('nik', $nik)->from('cv_keluarga')->get()->result();
         // Isi data keluarga
         $pdf->SetFont('cid0jp', '', $sizeEN);
+        $baris = 0;
+        $gaji = 0;
         foreach ($cv_keluarga as $keluarga) {
-            $pdf->Cell(20, $rowHeight, $keluarga->hubungan, 1, 0, 'C');
-            $pdf->Cell(50, $rowHeight, $keluarga->nama, 1, 0, 'C');
-            $pdf->Cell(20, $rowHeight, $keluarga->usia, 1, 0, 'C');
+            $pdf->Cell(15, $rowHeight, $keluarga->hubungan, 1, 0, 'C');
+            $pdf->SetFont('times', '', );
+            $pdf->Cell(40, $rowHeight, $keluarga->nama, 1, 0, 'C');
+            $pdf->SetFont('cid0jp', '', $sizeEN);
+            $pdf->Cell(20, $rowHeight, $keluarga->usia. '歳', 1, 0, 'C');
             $pdf->Cell(20, $rowHeight, $keluarga->serumah, 1, 0, 'C');
-            $pdf->Cell(40, $rowHeight, $keluarga->tempat, 1, 0, 'C');
-            $pdf->Cell(40, $rowHeight, $keluarga->pekerjaan, 1, 1, 'C');
+            $pdf->Cell(30, $rowHeight, "インドネシア", 1, 0, 'C');
+            $pdf->Cell(30, $rowHeight, $keluarga->pekerjaan, 1, 1, 'C');
+            $gaji += $keluarga->gaji;
+            $baris++;
         }
-
-        // Jika tidak ada data keluarga
-        if (empty($cv_keluarga)) {
-            $pdf->Cell(0, $rowHeight, 'Tidak ada data keluarga', 1, 1, 'C');
+        $kurang = 8-$baris; // Hitung sisa baris yang perlu diisi
+        for ($i = 0; $i < $kurang; $i++) {
+            $pdf->Cell(15, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(40, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(20, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(20, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(30, $rowHeight, '', 1, 0, 'C');
+            $pdf->Cell(30, $rowHeight, '', 1, 1, 'C');
         }
         // Baris 46
         $pdf->SetFont('cid0jp', '', $sizeJP);
@@ -298,8 +387,21 @@ class Pendaftaran extends CI_Controller {
         $pdf->Cell(70, $rowHeight, '保証人連絡先', 1, 0, 'C', true);
         $pdf->SetFont('cid0jp', '', $sizeEN);
         $pdf->Cell(40, $rowHeight, ' ', 1, 1, 'C');
-
+        $pdf->SetXY(165,274); // X default 10 (margin kiri), Y ditambah $rowHeight dari baris sebelumnya
+        $pdf->SetFont('cid0jp', '', $sizeJP);
+        $pdf->Cell(35, $rowHeight*8, $gaji. ' 万円', 1, 0, 'C');
         // Output PDF
         $pdf->Output('cv'.$nik.'.pdf', 'I');
+    }
+    public function export_excel($nik){
+        $data = array(
+            'judul_halaman' => 'Halaman Pendaftaran',
+            'cv' => $this->db->get('cv')->result_array(),
+            'pendidikan' => $this->db->where('nik', $nik)->get('cv_pendidikan')->result_array(),
+            'pengalaman' => $this->db->where('nik', $nik)->get('cv_pengalaman')->result_array(),
+            'keluarga' => $this->db->where('nik', $nik)->get('cv_keluarga')->result_array(),
+            'nik' => $nik,
+        );
+        $this->load->view('admin/excel',$data);
     }
 }

@@ -13,7 +13,7 @@
 
         <div class="col-md-12">
             <label for="alamat" class="form-label">Alamat</label>
-            <textarea name="alamat" id="alamat" rows="2" class="form-control" required></textarea>
+            <input name="alamat" id="alamat"  class="form-control" required>
         </div>
 
         <div class="col-md-6">
@@ -149,17 +149,17 @@
 
         <div class="col-md-12">
             <label for="motivasi" class="form-label">Motivasi Mengikuti Pelatihan</label>
-            <textarea name="motivasi" id="motivasi" rows="2" class="form-control"></textarea>
+            <input name="motivasi" id="motivasi" class="form-control">
         </div>
 
         <div class="col-md-12">
             <label for="kelebihan" class="form-label">Kelebihan</label>
-            <textarea name="kelebihan" id="kelebihan" rows="2" class="form-control"></textarea>
+            <input name="kelebihan" id="kelebihan" class="form-control">
         </div>
 
         <div class="col-md-12">
             <label for="kekurangan" class="form-label">Kekurangan</label>
-            <textarea name="kekurangan" id="kekurangan" rows="2" class="form-control"></textarea>
+            <input name="kekurangan" id="kekurangan" class="form-control">
         </div>
         <div class="col-md-12">
             <label for="kekurangan" class="form-label">Pernah Belajar Bahasa Jepang Berapa Tahun?</label>
@@ -180,11 +180,11 @@
                 <div class="col-input col-input-education-jenjang">
                     <label class="form-label-sub">Jenjang</label>
                     <select id="jenjang" class="form-select-custom">
-                        <option value="">Pilih Jenjang</option>
-                        <option value="SD">SD</option>
-                        <option value="SMP">SMP</option>
-                        <option value="SMA/SMK">SMA/SMK</option>
-                        <option value="Kuliah">Kuliah</option>
+                        <option value="">Pilih Jenjang</option><!-- "Pilih Jenjang" in Japanese -->
+                        <option value="小学校">小学校</option> <!-- "Sekolah Dasar" in Japanese -->
+                        <option value="中学校">中学校</option> <!-- "Sekolah Menengah Pertama" in Japanese -->
+                        <option value="高校">高校</option> <!-- "Sekolah Menengah Atas" in Japanese -->
+                        <option value="大学">大学</option> <!-- "Perguruan Tinggi" in Japanese -->
                     </select>
                 </div>
                 <div class="col-input col-input-education-year">
@@ -227,18 +227,18 @@
                 <div class="col-input col-input-work-year">
                     <label class="form-label-sub">Bulan</label>
                     <select name="bulan_awal" id="bulan_awal" class="form-control">
-                        <option value="Januari">Januari</option>
-                        <option value="Februari">Februari</option>
-                        <option value="Maret">Maret</option>
-                        <option value="April">April</option>
-                        <option value="Mei">Mei</option>
-                        <option value="Juni">Juni</option>
-                        <option value="Juli">Juli</option>
-                        <option value="Agustus">Agustus</option>
-                        <option value="September">September</option>
-                        <option value="Oktober">Oktober</option>
-                        <option value="November">November</option>
-                        <option value="Desember">Desember</option>
+                        <option value="1月">1月（いちがつ）</option>
+                        <option value="2月">2月（にがつ）</option>
+                        <option value="3月">3月（さんがつ）</option>
+                        <option value="4月">4月（しがつ）</option>
+                        <option value="5月">5月（ごがつ）</option>
+                        <option value="6月">6月（ろくがつ）</option>
+                        <option value="7月">7月（しちがつ）</option>
+                        <option value="8月">8月（はちがつ）</option>
+                        <option value="9月">9月（くがつ）</option>
+                        <option value="10月">10月（じゅうがつ）</option>
+                        <option value="11月">11月（じゅういちがつ）</option>
+                        <option value="12月">12月（じゅうにがつ）</option>
                     </select>
                 </div>
                 <div class="col-input col-input-work-year">
@@ -248,18 +248,18 @@
                 <div class="col-input col-input-work-year">
                     <label class="form-label-sub">Bulan</label>
                     <select name="bulan_akhir" id="bulan_akhir" class="form-control">
-                        <option value="Januari">Januari</option>
-                        <option value="Februari">Februari</option>
-                        <option value="Maret">Maret</option>
-                        <option value="April">April</option>
-                        <option value="Mei">Mei</option>
-                        <option value="Juni">Juni</option>
-                        <option value="Juli">Juli</option>
-                        <option value="Agustus">Agustus</option>
-                        <option value="September">September</option>
-                        <option value="Oktober">Oktober</option>
-                        <option value="November">November</option>
-                        <option value="Desember">Desember</option>
+                        <option value="1月">1月（いちがつ）</option>
+                        <option value="2月">2月（にがつ）</option>
+                        <option value="3月">3月（さんがつ）</option>
+                        <option value="4月">4月（しがつ）</option>
+                        <option value="5月">5月（ごがつ）</option>
+                        <option value="6月">6月（ろくがつ）</option>
+                        <option value="7月">7月（しちがつ）</option>
+                        <option value="8月">8月（はちがつ）</option>
+                        <option value="9月">9月（くがつ）</option>
+                        <option value="10月">10月（じゅうがつ）</option>
+                        <option value="11月">11月（じゅういちがつ）</option>
+                        <option value="12月">12月（じゅうにがつ）</option>
                     </select>
                 </div>
                 <div class="col-input col-input-work-year">
@@ -276,7 +276,7 @@
                 </div>
                 <div class="col-input col-input-work-salary">
                     <label class="form-label-sub">Gaji</label>
-                    <input type="number" id="kerja_gaji" class="form-control-custom">
+                    <input type="number" id="kerja_gaji" class="form-control-custom" placeholder="0-10, 1 = 1 juta">
                 </div>
             </div>
             <div class="button-row-bottom">
@@ -305,9 +305,21 @@
             <h5 class="mb-4">Data Keluarga</h5>
             <div class="row-form-inputs">
                 <div class="col-input col-input-family-relation">
-                    <label class="form-label-sub">Hubungan</label>
-                    <input type="text" id="keluarga_hubungan" class="form-control-custom" placeholder="Contoh: Ayah">
+                    <label class="form-label-sub">関係 (Kankei)</label>
+                    <select id="keluarga_hubungan" name="keluarga_hubungan" class="form-control-custom">
+                        <option value="父">父 (Chichi - Ayah)</option>
+                        <option value="母">母 (Haha - Ibu)</option>
+                        <option value="兄">兄 (Ani - Kakak Laki-laki)</option>
+                        <option value="姉">姉 (Ane - Kakak Perempuan)</option>
+                        <option value="弟">弟 (Otōto - Adik Laki-laki)</option>
+                        <option value="妹">妹 (Imōto - Adik Perempuan)</option>
+                        <option value="祖父">祖父 (Sofu - Kakek)</option>
+                        <option value="祖母">祖母 (Sobo - Nenek)</option>
+                        <option value="夫">夫 (Otto - Suami)</option>
+                        <option value="妻">妻 (Tsuma - Istri)</option>
+                    </select>
                 </div>
+
                 <div class="col-input col-input-family-name">
                     <label class="form-label-sub">Nama</label>
                     <input type="text" id="keluarga_nama" class="form-control-custom">
@@ -319,13 +331,17 @@
                 <div class="col-input col-input-family-serumah">
                     <label class="form-label-sub">Serumah</label>
                     <select id="keluarga_serumah" class="form-select-custom">
-                        <option value="無">無</option>  <!-- "Tidak" in Japanese -->
-                        <option value="有">有</option>  <!-- "Ya" in Japanese -->
+                        <option value="同居">同居</option>  <!-- "Tidak" in Japanese -->
+                        <option value="別居">別居</option>  <!-- "Ya" in Japanese -->
                     </select>
                 </div>
                 <div class="col-input col-input-family-job">
                     <label class="form-label-sub">Pekerjaan</label>
                     <input type="text" id="keluarga_pekerjaan" class="form-control-custom">
+                </div>
+                <div class="col-input col-input-family-job">
+                    <label class="form-label-sub">Gaji</label>
+                    <input type="number" id="keluarga_gaji" class="form-control-custom" placeholder="0-10, 1 = 1 juta">
                 </div>
             </div>
             <div class="button-row-bottom">
@@ -618,9 +634,9 @@
         const sebagai = document.getElementById("kerja_sebagai").value.trim();
         const gaji = document.getElementById("kerja_gaji").value.trim();
 
-        if (awal && akhir && tempat && sebagai && alamat && gaji) {
+        if (awal && akhir && tempat && sebagai && gaji) {
             const data = getKerja();
-            data.push({ bulan_awal,bulan_akhir, awal, akhir, tempat, sebagai, alamat, gaji });
+            data.push({ bulan_awal,bulan_akhir, awal, akhir, tempat, sebagai, gaji });
             simpanKerja(data);
             tampilkanKerja();
 
@@ -706,8 +722,9 @@
         const usia = document.getElementById("keluarga_usia").value.trim();
         const serumah = document.getElementById("keluarga_serumah").value;
         const pekerjaan = document.getElementById("keluarga_pekerjaan").value.trim();
+        const gaji = document.getElementById("keluarga_gaji").value.trim();
 
-        if (hubungan && nama && usia && serumah && pekerjaan) {
+        if (hubungan && nama && usia && serumah && pekerjaan && gaji) {
             const data = getKeluarga();
             data.push({ hubungan, nama, usia, serumah, pekerjaan });
             simpanKeluarga(data);
@@ -718,6 +735,7 @@
             document.getElementById("keluarga_nama").value = "";
             document.getElementById("keluarga_usia").value = "";
             document.getElementById("keluarga_pekerjaan").value = "";
+            document.getElementById("keluarga_gaji").value = "";
         } else {
             Swal.fire({
                 icon: 'error',

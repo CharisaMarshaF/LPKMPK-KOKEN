@@ -1,9 +1,34 @@
 <div id="myalert" class="mt-3">
     <?= $this->session->flashdata('notifikasi') ?>
 </div>
-
+<div class="text-right">
+    <a href="#" id="export-all-btn" class="btn btn-success mt-5 text-white" target="_blank">
+        <i data-lucide="file-text" class="w-4 h-4 mr-1"></i> Ekspor Semua Data
+    </a>
+</div>
+<script>
+$(document).ready(function () {
+    $("#export-all-btn").click(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Apakah Anda yakin?",
+            text: "Jangan terlalu sering melakukan ekspor data. Lanjutkan ekspor semua data?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, ekspor!",
+            cancelButtonText: "Batal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.open("<?= base_url('admin/excel/all') ?>", "_blank");
+            }
+        });
+    });
+});
+</script>
 <!-- BEGIN: Datatable -->
-<div class="intro-y box mt-10">
+<div class="intro-y box mt-3">
     <div class="p-5">
         <div class="overflow-x-auto">
             <table id="example1" class="table table-report table-report--bordered w-full">
@@ -32,7 +57,7 @@
                                 <a target="_blank" href="<?= base_url('admin/pendaftaran/preview/'.$t['nik']) ?>" class="flex items-center mr-3 text-blue-500 edit-btn">
                                     <i data-lucide="edit" class="w-4 h-4 mr-1"></i> Lihat
                                 </a>
-                                <a href="<?= base_url('admin/pendaftaran/excel/'.$t['nik']) ?>" class="flex items-center mr-3 text-green-600">
+                                <a href="<?= base_url('admin/excel/excel/'.$t['nik']) ?>" class="flex items-center mr-3 text-green-600">
                                     <i data-lucide="file-text" class="w-4 h-4 mr-1"></i> Export
                                 </a>
                                 <a href="javascript:;" class="flex items-center text-danger delete-btn" data-id="<?= $t['nik'] ?>">

@@ -20,8 +20,8 @@
             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
             <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
                 <option value="">Pilih</option>
-                <option value="男">男</option>
-                <option value="女">女</option>
+                <option value="男">男 (Laki-Laki)</option>
+                <option value="女">女 (Perempuan)</option>
             </select>
         </div>
 
@@ -33,9 +33,9 @@
         <div class="col-md-6">
             <label for="menikah" class="form-label">Status Menikah</label>
             <select name="menikah" id="menikah" class="form-select">
-                <option value="未婚">未婚</option>
-                <option value="既婚">既婚</option>
-                <option value="離婚">離婚</option>
+                <option value="未婚">未婚 (Belum Menikah)</option>
+                <option value="既婚">既婚 (Sudah Menikah)</option>
+                <option value="離婚">離婚 (Cerai)</option>
             </select>
         </div>
 
@@ -52,8 +52,8 @@
         <div class="col-md-6">
             <label for="buta_warna" class="form-label">Buta Warna</label>
             <select name="buta_warna" id="buta_warna" class="form-select">
-                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
-                <option value="有">有</option>  <!-- "Ya" in Japanese -->
+                <option value="無">無 (Tidak)</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有 (Ya)</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
@@ -71,8 +71,8 @@
         <div class="col-md-6">
             <label for="tangan_dominan" class="form-label">Tangan Dominan</label>
             <select name="tangan_dominan" id="tangan_dominan" class="form-select">
-                <option value="右">右</option>
-                <option value="左">左</option>
+                <option value="右">右 (Kanan)</option>
+                <option value="左">左 (Kiri)</option>
             </select>
         </div>
 
@@ -88,42 +88,42 @@
         <div class="col-md-6">
             <label for="operasi" class="form-label">Pernah Operasi</label>
             <select name="operasi" id="operasi" class="form-select">
-                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
-                <option value="有">有</option>  <!-- "Ya" in Japanese -->
+                <option value="無">無 (Tidak)</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有 (Ya)</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
         <div class="col-md-6">
             <label for="alkohol" class="form-label">Konsumsi Alkohol</label>
             <select name="alkohol" id="alkohol" class="form-select">
-                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
-                <option value="有">有</option>  <!-- "Ya" in Japanese -->
+                <option value="無">無 (Tidak)</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有 (Ya)</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
         <div class="col-md-6">
             <label for="merokok" class="form-label">Merokok</label>
             <select name="merokok" id="merokok" class="form-select">
-                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
-                <option value="有">有</option>  <!-- "Ya" in Japanese -->
+                <option value="無">無 (Tidak)</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有 (Ya)</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
         <div class="col-md-6">
             <label for="tato" class="form-label">Memiliki Tato</label>
             <select name="tato" id="tato" class="form-select">
-                <option value="無">無</option>  <!-- "Tidak" in Japanese -->
-                <option value="有">有</option>  <!-- "Ya" in Japanese -->
+                <option value="無">無 (Tidak)</option>  <!-- "Tidak" in Japanese -->
+                <option value="有">有 (Ya)</option>  <!-- "Ya" in Japanese -->
             </select>
         </div>
 
         <div class="col-md-6">
             <label for="agama" class="form-label">Agama</label>
             <select name="agama" id="agama" class="form-select">
-                <option value="イスラム">イスラム</option>
-                <option value="クリスト">クリスト</option>
-                <option value="ヒンドゥー教">ヒンドゥー教</option>
-                <option value="仏教">仏教</option>
+                <option value="イスラム">イスラム (Islam)</option>
+                <option value="クリスト">クリスト (Kristen)</option>
+                <option value="ヒンドゥー教">ヒンドゥー教 (Hindu)</option>
+                <option value="仏教">仏教 (Buddha)</option>
             </select>
         </div>
 
@@ -143,7 +143,7 @@
         </div>
 
         <div class="col-md-6">
-            <label for="promosi" class="form-label">Tahu dari mana?</label>
+            <label for="promosi" class="form-label">Promosi Diri</label>
             <input type="text" name="promosi" id="promosi" class="form-control">
         </div>
 
@@ -164,16 +164,20 @@
         <div class="col-md-12">
             <label for="kekurangan" class="form-label">Pernah Belajar Bahasa Jepang Berapa Tahun?</label>
             <select name="bahasa_jepang" class="form-control">
-                <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
             </select>
         </div>
-        
-
         <div class="form-section">
             <h5 class="mb-4">Riwayat Pendidikan</h5>
             <div class="row-form-inputs">
@@ -181,10 +185,10 @@
                     <label class="form-label-sub">Jenjang</label>
                     <select id="jenjang" class="form-select-custom">
                         <option value="">Pilih Jenjang</option><!-- "Pilih Jenjang" in Japanese -->
-                        <option value="小学校">小学校</option> <!-- "Sekolah Dasar" in Japanese -->
-                        <option value="中学校">中学校</option> <!-- "Sekolah Menengah Pertama" in Japanese -->
-                        <option value="高校">高校</option> <!-- "Sekolah Menengah Atas" in Japanese -->
-                        <option value="大学">大学</option> <!-- "Perguruan Tinggi" in Japanese -->
+                        <option value="小学校">小学校 (SD)</option> <!-- "Sekolah Dasar" in Japanese -->
+                        <option value="中学校">中学校 (SMP)</option> <!-- "Sekolah Menengah Pertama" in Japanese -->
+                        <option value="高校">高校 (SMA/SMK)</option> <!-- "Sekolah Menengah Atas" in Japanese -->
+                        <option value="大学">大学 (Perguruan Tinggi)</option> <!-- "Perguruan Tinggi" in Japanese -->
                     </select>
                 </div>
                 <div class="col-input col-input-education-year">
@@ -248,18 +252,18 @@
                 <div class="col-input col-input-work-year">
                     <label class="form-label-sub">Bulan</label>
                     <select name="bulan_akhir" id="bulan_akhir" class="form-control">
-                        <option value="1月">1月（いちがつ）</option>
-                        <option value="2月">2月（にがつ）</option>
-                        <option value="3月">3月（さんがつ）</option>
-                        <option value="4月">4月（しがつ）</option>
-                        <option value="5月">5月（ごがつ）</option>
-                        <option value="6月">6月（ろくがつ）</option>
-                        <option value="7月">7月（しちがつ）</option>
-                        <option value="8月">8月（はちがつ）</option>
-                        <option value="9月">9月（くがつ）</option>
-                        <option value="10月">10月（じゅうがつ）</option>
-                        <option value="11月">11月（じゅういちがつ）</option>
-                        <option value="12月">12月（じゅうにがつ）</option>
+                        <option value="1">1月（いちがつ）</option>
+                        <option value="2">2月（にがつ）</option>
+                        <option value="3">3月（さんがつ）</option>
+                        <option value="4">4月（しがつ）</option>
+                        <option value="5">5月（ごがつ）</option>
+                        <option value="6">6月（ろくがつ）</option>
+                        <option value="7">7月（しちがつ）</option>
+                        <option value="8">8月（はちがつ）</option>
+                        <option value="9">9月（くがつ）</option>
+                        <option value="10">10月（じゅうがつ）</option>
+                        <option value="11">11月（じゅういちがつ）</option>
+                        <option value="12">12月（じゅうにがつ）</option>
                     </select>
                 </div>
                 <div class="col-input col-input-work-year">
@@ -331,8 +335,8 @@
                 <div class="col-input col-input-family-serumah">
                     <label class="form-label-sub">Serumah</label>
                     <select id="keluarga_serumah" class="form-select-custom">
-                        <option value="同居">同居</option>  <!-- "Tidak" in Japanese -->
-                        <option value="別居">別居</option>  <!-- "Ya" in Japanese -->
+                        <option value="同居">同居 (Ya)</option>  
+                        <option value="別居">別居 (Tidak)</option>  
                     </select>
                 </div>
                 <div class="col-input col-input-family-job">
@@ -371,7 +375,7 @@
             </div>
             <p>Pastikan foto Anda berformat .jpg dan berukuran 3x4.</p>
               <p id="warning" class="mt-2 text-sm text-red-600 hidden">
-                ⚠️ Ukuran file terlalu besar. Maksimal 500 KB.
+                ⚠️ Ukuran file terlalu besar. Maksimal 1 MB.
             </p>
         </div>
         <!-- Tambahkan SweetAlert2 CDN di head atau sebelum penutup </body> -->
@@ -383,12 +387,12 @@
 
         fileInput.addEventListener('change', function () {
             const file = this.files[0];
-            if (file && file.size > 500 * 1024) { // 500 KB
+            if (file && file.size > 1000 * 1024) { // 1 MB
             // Tampilkan SweetAlert
             Swal.fire({
                 icon: 'error',
                 title: 'Ukuran File Terlalu Besar',
-                text: 'Ukuran maksimal yang diperbolehkan adalah 500 KB.',
+                text: 'Ukuran maksimal yang diperbolehkan adalah 1 MB.',
                 confirmButtonColor: '#16a34a'
             });
 

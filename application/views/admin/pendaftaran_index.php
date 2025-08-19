@@ -1,11 +1,11 @@
 <div id="myalert" class="mt-3">
     <?= $this->session->flashdata('notifikasi') ?>
 </div>
-<div class="text-right">
+<!-- <div class="text-right">
     <a href="#" id="export-all-btn" class="btn btn-success mt-5 text-white" target="_blank">
         <i data-lucide="file-text" class="w-4 h-4 mr-1"></i> Ekspor Semua Data
     </a>
-</div>
+</div> -->
 <script>
 $(document).ready(function () {
     $("#export-all-btn").click(function (e) {
@@ -28,7 +28,7 @@ $(document).ready(function () {
 });
 </script>
 <!-- BEGIN: Datatable -->
-<div class="intro-y box mt-3">
+<div class="intro-y box mt-5">
     <div class="p-5">
         <div class="overflow-x-auto">
             <table id="example1" class="table table-report table-report--bordered w-full">

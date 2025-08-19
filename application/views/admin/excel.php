@@ -350,13 +350,13 @@ $baris=0; foreach ($keluarga as $k){ ?>
 <tr>
   <td class="bl" colspan="2">在日親族</td>
   <td colspan="2">&nbsp;</td>
-  <td class="bl" colspan="1">&日本へ行くことに家族は</td>
+  <td class="bl" colspan="1">日本へ行くことに家族は</td>
   <td colspan="3">&nbsp;</td>
 </tr>
 <tr>
   <td class="bl" colspan="3">保証人氏名</td>
   <td colspan="1">&nbsp;</td>
-  <td class="bl" colspan="2">&保証人連絡先</td>
+  <td class="bl" colspan="2">保証人連絡先</td>
   <td colspan="2">&nbsp;</td>
 </tr>
 </table>

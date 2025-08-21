@@ -314,7 +314,7 @@ class Excel extends CI_Controller {
         $sheet->setCellValue('S12', '市民番号'); // nik
         $sheet->getStyle('S12:Z12')->applyFromArray($styleHeader);
         $sheet->getStyle('S12:Z12')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-//Baris 13
+//Baris 13 test
         // Merge A13:I13 untuk agama
         $sheet->mergeCells('A13:I13');
         $sheet->setCellValue('A13', $cv->agama); // Agama

@@ -21,6 +21,7 @@ class Daftar extends CI_Controller {
         );
          $this->load->view('daftar', $data);
     }
+    
     public function submit(){
         $ceknik = $this->input->post('nik');
         $this->db->where('nik', $ceknik);

@@ -85,6 +85,13 @@
 					</a>
 				</li>
 				<li>
+					<a href="<?= site_url('admin/halamanKK') ?>"
+						class="side-menu <?php if($menu=='halamanKK'){ echo"side-menu--active"; } ?>">
+						<div class="side-menu__icon"><i data-lucide="users"></i></div>
+						<div class="side-menu__title">Kartu</div>
+					</a>
+				</li>
+				<li>
 					<a href="<?= site_url('admin/caraousel') ?>"
 						class="side-menu <?php if($menu=='caraousel'){ echo"side-menu--active"; } ?>">
 						<div class="side-menu__icon"><i data-lucide="image-plus"></i></div>

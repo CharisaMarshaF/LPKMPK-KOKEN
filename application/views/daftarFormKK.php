@@ -1,5 +1,5 @@
 <div class="card card-body shadow p-4">
-    <form action="<?= base_url('daftarKK/submit_kk') ?>" method="POST" class="row g-3" enctype="multipart/form-data">
+    <form action="<?= base_url('card/submit_kk') ?>" method="POST" class="row g-3" enctype="multipart/form-data">
         <!-- Data Kartu Keluarga -->
         <h5 class="mb-4">Data Kartu Keluarga</h5>
 
@@ -156,6 +156,7 @@
                         <option value="役人">役人 (Perangkat Desa)</option>
                         <option value="村長">村長 (Kepala Desa)</option>
                         <option value="自営業">自営業 (Wiraswasta)</option>
+                        <option value="その他">その他 (Lainnya)</option>
                     </select>
                 </div>
             </div>

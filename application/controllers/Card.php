@@ -9,9 +9,16 @@ class Card extends CI_Controller {
         $this->load->helper(array('url', 'form'));
     }
 
-    public function index()
-    {
-        $this->load->view('daftarKK');
+    public function index(){
+        $this->db->from('konfigurasi');
+        $konfig = $this->db->get()->row();
+        $sosmed = $this->db->get('social_media')->row();
+        $data = array(
+            'judul'        => "Galeri Foto | Binco Ran Nusantara",
+            'konfig'       => $konfig,
+            'sosmed'       => $sosmed,
+        );
+        $this->load->view('daftarKK',$data);
     }
     
     public function submit_kk()
